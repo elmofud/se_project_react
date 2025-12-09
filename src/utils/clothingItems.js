@@ -1,1 +1,1 @@
-export const defaultClothingItems = []
+export const defaultClothingItems = [];
