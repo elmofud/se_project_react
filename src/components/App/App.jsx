@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import Header from '../Header/Header.jsx'
+import Header from '../Header/Header'
 import { defaultClothingItems } from '../../utils/clothingItems.js'
-import Main from "../Main/Main.jsx"
+import Main from "../Main/Main"
 import './App.css'
 
 function App() {
