@@ -1,9 +1,14 @@
 .page {
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color:#000000;
   background-color: #ffffff;
 }
 
 .page__content {
-  max-width: 1365px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0 20px;
 }

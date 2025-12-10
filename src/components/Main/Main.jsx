@@ -5,7 +5,7 @@ function Main() {
       <WeatherCard />
       <section className="cards">
         <p className="cards__text">
-          Today is 75 &deg: F  / YOu want to wear:
+          Today is 75 &deg; F  / You want to wear:
         </p>
         {/*add cards*/}
       </section>
