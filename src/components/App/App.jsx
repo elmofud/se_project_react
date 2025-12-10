@@ -6,7 +6,7 @@ import Main from "../Main/Main.jsx"
 import './App.css'
 
 function App() {
-  const [defaultClothingItems, setDefaultClothingItems] = useState([currentClothingItems]);
+//  const [defaultClothingItems, setDefaultClothingItems] = useState([currentClothingItems]);
   return (
     <div className="page">
       <div className="page__content">   
