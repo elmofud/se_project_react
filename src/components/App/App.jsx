@@ -1,20 +1,19 @@
-import React from 'react'
-import { useState } from 'react'
-import Header from '../Header/Header'
-import { defaultClothingItems } from '../../utils/clothingItems.js'
-import Main from "../Main/Main"
-import './App.css'
+import React from "react";
+import { useState } from "react";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import "./App.css";
 
 function App() {
-//  const [defaultClothingItems, setDefaultClothingItems] = useState([currentClothingItems]);
+  const [weatherData, setWeatherData] = useState({ type: "hot" });
   return (
     <div className="page">
-      <div className="page__content">   
+      <div className="page__content">
         <Header />
-        <Main />
+        <Main weatherData={weatherData} />
       </div>
-    </div>   
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
