@@ -1,38 +1,39 @@
 header {
-    display: flex;
-    align-items: center;
-    padding: 32px 0 28px;
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
 }
 
 .header__logo {
-    margin-right: 24px;
+  margin-right: 24px;
 }
 
-.header__date-and-location{ 
-    margin: 0;
+.header__date-and-location {
+  margin: 0;
 }
 
 .header__add-Clothes-btn {
-    font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    color:#000000;
-    border: none;
-    margin: 0 20px 0 auto;
-    background-color: #ffffff;
+  font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000000;
+  border: none;
+  margin: 0 20px 0 auto;
+  background-color: #ffffff;
+  cursor: pointer;
 }
 
 .header__user-container {
-    display: flex;
-    align-items:  center;
-    gap: 88px;
+  display: flex;
+  align-items: center;
+  gap: 88px;
 }
 
 .header__username {
-    margin: 0;
+  margin: 0;
 }
 
 .header__avatar {
-    margin: 0;
+  margin: 0;
 }
