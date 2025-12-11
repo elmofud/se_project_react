@@ -27,7 +27,7 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} />
-        <Main weatherData={weatherData} />
+        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <div>
           <ModalWithForm
             title="New garment"
@@ -95,7 +95,11 @@ function App() {
               </label>
             </fieldset>
           </ModalWithForm>
-          <ItemModal activeModal={activeModal} card={selectedCard} />
+          <ItemModal
+            activeModal={activeModal}
+            onClose={handleCloseClick}
+            card={selectedCard}
+          />
         </div>
       </div>
     </div>
