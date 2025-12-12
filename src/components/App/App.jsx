@@ -10,7 +10,7 @@ import "./App.css";
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "cold",
-    temp: { f: 999, c: 999 },
+    temp: { F: 999, C: 999 },
     city: "",
   });
   const [activeModal, setActiveModal] = useState("");
