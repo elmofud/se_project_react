@@ -1,9 +1,11 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
+import { coordinates, APIkey } from "../../utils/clothingItems";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import { getWeather } from "../../utils/weatherApi";
 import "./App.css";
 
 function App() {
@@ -22,6 +24,14 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  useEffect(() => {
+    getWeather(coordinates, APIkey)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <div className="page">
