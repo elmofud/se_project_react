@@ -1,15 +1,18 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
-import { coordinates, APIkey } from "../../utils/clothingItems";
+import { coordinates, APIkey } from "../../utils/constants";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import { getWeather } from "../../utils/weatherApi";
+import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import "./App.css";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({ type: "cold" });
+  const [weatherData, setWeatherData] = useState({
+    type: "cold",
+    temp: { f: 999, c: 999 },
+    city: "",
+  });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const handleAddClick = () => {
@@ -28,15 +31,15 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        console.log(data);
+        const filterDate = filterWeatherData(data);
+        setWeatherData(filterDate);
       })
       .catch(console.error);
   }, []);
-
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={handleAddClick} />
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <div>
           <ModalWithForm
@@ -77,7 +80,7 @@ function App() {
                   className="modal__radio-input"
                   name="climate"
                 />
-                Hot
+                hot
               </label>
               <label
                 htmlFor="warm"

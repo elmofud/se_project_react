@@ -14,7 +14,7 @@ function ItemModal({ activeModal, onClose, card }) {
         <img src={card.link} alt="clothing images" className="modal__image" />
         <div className="modal__card-footer">
           <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">{card.weather}</p>
+          <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>
     </div>
