@@ -78,3 +78,12 @@ export const weatherOptions = [
     url: new URL("../assets/night/storm.png", import.meta.url),
   },
 ];
+
+export const defaultWeatherOptions = {
+  day: {
+    url: new URL("../assests/day/defaultDay.png", import.meta.url),
+  },
+  night: {
+    url: new URL("../assets/night/storm.png", import.meta.url),
+  },
+};
