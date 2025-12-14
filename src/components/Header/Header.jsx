@@ -12,12 +12,12 @@ function Header({ handleAddClick, weatherData }) {
     <header className="header">
       <img className="header__logo" src={logo} alt="What to Wear logo" />
       <p className="header__date-and-location">
-        {currentDate},{weatherData.city}
+        {currentDate}, {weatherData.city}
       </p>
       <button
         onClick={handleAddClick}
         type="button"
-        className="header__add-Clothes-btn"
+        className="header__add-clothes-btn"
       >
         + Add Clothes
       </button>

@@ -20,12 +20,6 @@
   font-size: 16px;
 }
 
-.modal__close-button-image {
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-
 .modal__close {
   position: absolute;
   top: 20px;
@@ -50,6 +44,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 .modal__input {
@@ -77,4 +74,9 @@
   font-size: 16px;
   line-height: 20px;
   border: 1px solid #0000004d;
+  color: #ffffff;
+}
+
+.modal__submit:hover {
+  background: #00000099;
 }

@@ -12,7 +12,7 @@ header {
   margin: 0;
 }
 
-.header__add-Clothes-btn {
+.header__add-clothes-btn {
   font-family: "Cabinet Grotesk", Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
@@ -22,6 +22,10 @@ header {
   margin: 0 20px 0 auto;
   background-color: #ffffff;
   cursor: pointer;
+}
+
+.header__add-clothes-btn:hover {
+  color: #0000004d;
 }
 
 .header__user-container {

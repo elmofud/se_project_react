@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { coordinates, APIkey } from "../../utils/constants";
 import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
@@ -15,6 +16,21 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [selectedWeather, setSelectedWeather] = useState("");
+  const [inputClothesName, setInputClothesName] = useState("");
+  const [inputClothesUrl, setInputClothesUrl] = useState("");
+
+  const handleClothesUrlChange = (evt) => {
+    setInputClothesUrl(evt.target.value);
+  };
+
+  const handleClothesNameChange = (evt) => {
+    setInputClothesName(evt.target.value);
+  };
+
+  const handleOptionChange = (evt) => {
+    setSelectedWeather(evt.target.value);
+  };
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
@@ -41,6 +57,7 @@ function App() {
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Footer />
         <div>
           <ModalWithForm
             title="New garment"
@@ -55,6 +72,8 @@ function App() {
                 className="modal__input"
                 id="name"
                 placeholder="Name"
+                value={inputClothesName}
+                onChange={handleClothesNameChange}
               />
             </label>
             <label htmlFor="imageUrl" className="modal__label">
@@ -64,6 +83,8 @@ function App() {
                 className="modal__input"
                 id="imageUrl"
                 placeholder="Image URL"
+                value={inputClothesUrl}
+                onChange={handleClothesUrlChange}
               />
             </label>
             <fieldset className="modal__radio-buttons">
@@ -79,6 +100,9 @@ function App() {
                   type="radio"
                   className="modal__radio-input"
                   name="climate"
+                  value="hot"
+                  checked={selectedWeather === `hot`}
+                  onChange={handleOptionChange}
                 />
                 hot
               </label>
@@ -91,6 +115,9 @@ function App() {
                   type="radio"
                   className="modal__radio-input"
                   name="climate"
+                  value="warm"
+                  checked={selectedWeather === `warm`}
+                  onChange={handleOptionChange}
                 />
                 warm
               </label>
@@ -103,6 +130,9 @@ function App() {
                   type="radio"
                   className="modal__radio-input"
                   name="climate"
+                  value="cold"
+                  checked={selectedWeather === `cold`}
+                  onChange={handleOptionChange}
                 />
                 cold
               </label>
