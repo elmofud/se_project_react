@@ -2,7 +2,10 @@ import "./ItemModal.css";
 import whiteCloseBtn from "../../assets/whiteCloseButton.png";
 function ItemModal({ activeModal, onClose, card }) {
   return (
-    <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
+    <div
+      onClick={onClose}
+      className={`modal ${activeModal === "preview" && "modal_opened"}`}
+    >
       <div className="modal__content modal_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           <img
