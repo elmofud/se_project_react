@@ -38,7 +38,7 @@ className="{`}"    >
         <button onClick={onClose} type="button" className="modal__close">
           <img
             src={closeButton}
-            alt="black X image close button"
+            alt="black X image close"
             className="modal__close-button-image"
           />
         </button>

@@ -7,7 +7,7 @@ function ItemModal({ isOpen, onClose, card }) {
         <button onClick={onClose} type="button" className="modal__close">
           <img
             src={whiteCloseBtn}
-            alt="white close button"
+            alt="white X image close button"
             className="modal__close-button-image"
           />
         </button>
