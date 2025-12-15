@@ -68,6 +68,7 @@ function App() {
             <label htmlFor="name" className="modal__label">
               Name{" "}
               <input
+                required
                 type="text"
                 className="modal__input"
                 id="name"
@@ -79,6 +80,7 @@ function App() {
             <label htmlFor="imageUrl" className="modal__label">
               Image{" "}
               <input
+                required
                 type="url"
                 className="modal__input"
                 id="imageUrl"
@@ -139,7 +141,7 @@ function App() {
             </fieldset>
           </ModalWithForm>
           <ItemModal
-            activeModal={activeModal}
+            isOpen={activeModal === "preview"}
             onClose={handleCloseClick}
             card={selectedCard}
           />

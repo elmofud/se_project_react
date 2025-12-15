@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import "./ModalWithForm.css";
 import closeButton from "../../assets/closeButton.png";
 import { Children } from "react";
-function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
-  const handleClothesSubmit = (evt) => {
+// function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
+  function ModalWithForm({children,buttonText, title, isOpen, onClose}) {}
+const handleClothesSubmit = (evt) => {
     evt.preventDefault();
   };
 
@@ -31,14 +32,13 @@ function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
   return (
     <div
       onClick={handleOverlayClick}
-      className={`modal ${activeModal === "add-garment" && "modal_opened"}`}
-    >
+className="{`}"    >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
           <img
             src={closeButton}
-            alt="close button X"
+            alt="black X image close button"
             className="modal__close-button-image"
           />
         </button>
