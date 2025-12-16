@@ -90,7 +90,7 @@ https://1drv.ms/v/c/016b05295161b701/IQDizj-KlHEpQLDyOMQXbpsiAVlFVA5fJ-mGnGx2lmb
 
 **the link to project on GitHub Pages**
 
-Your site is live at https://github.com/elmofud/se_project_react.git
+Your site is live at https://elmofud.github.io/se_project_react/
 
 # React + Vite
 
