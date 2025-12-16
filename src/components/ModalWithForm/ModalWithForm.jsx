@@ -3,12 +3,15 @@ import { useEffect } from "react";
 import "./ModalWithForm.css";
 import closeButton from "../../assets/closeButton.png";
 import { Children } from "react";
-// function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
-  function ModalWithForm({children,buttonText, title, isOpen, onClose}) {}
-const handleClothesSubmit = (evt) => {
-    evt.preventDefault();
-  };
-
+function ModalWithForm({
+  children,
+  buttonText,
+  title,
+  onClose,
+  name,
+  isOpen,
+  onSubmit,
+}) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
       onClose();
@@ -21,18 +24,19 @@ const handleClothesSubmit = (evt) => {
         onClose();
       }
     };
-    if (activeModal) {
+    if (isOpen) {
       document.addEventListener("keydown", handleEscapeKey);
     }
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, [activeModal, onClose]);
+  }, [isOpen, onClose]);
 
   return (
     <div
       onClick={handleOverlayClick}
-className="{`}"    >
+      className={`modal modal_type_${name} ${isOpen ? `modal_opened` : ``} `}
+    >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
         <button onClick={onClose} type="button" className="modal__close">
@@ -42,7 +46,7 @@ className="{`}"    >
             className="modal__close-button-image"
           />
         </button>
-        <form className="modal__form" onSubmit={handleClothesSubmit}>
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
           <button className="modal__submit" type="submit">
             {buttonText}

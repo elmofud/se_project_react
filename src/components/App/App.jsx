@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
+import { defaultClothingItems } from "../../utils/clothingItems";
+
 import "./App.css";
 
 function App() {
@@ -19,6 +21,23 @@ function App() {
   const [selectedWeather, setSelectedWeather] = useState("");
   const [inputClothesName, setInputClothesName] = useState("");
   const [inputClothesUrl, setInputClothesUrl] = useState("");
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+
+  const handleClothesSubmit = (evt) => {
+    evt.preventDefault();
+    const newItem = {
+      _id: Date.now(),
+      name: inputClothesName,
+      imageUrl: inputClothesUrl,
+      weather: selectedWeather,
+    };
+    handleAddItem(newItem);
+  };
+
+  const handleAddItem = (newItem) => {
+    setClothingItems([...clothingItems, newItem]);
+    setActiveModal("");
+  };
 
   const handleClothesUrlChange = (evt) => {
     setInputClothesUrl(evt.target.value);
@@ -45,7 +64,7 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, APIkey)
+    getWeather(coordinates, apiKey)
       .then((data) => {
         const filterDate = filterWeatherData(data);
         setWeatherData(filterDate);
@@ -56,7 +75,11 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
         <Footer />
         <div>
           <ModalWithForm
@@ -64,6 +87,8 @@ function App() {
             buttonText="Add garment"
             activeModal={activeModal}
             onClose={handleCloseClick}
+            onSubmit={handleClothesSubmit}
+            name="add-garment"
           >
             <label htmlFor="name" className="modal__label">
               Name{" "}
