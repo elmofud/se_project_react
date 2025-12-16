@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 import "./ModalWithForm.css";
 import closeButton from "../../assets/closeButton.png";
-import { Children } from "react";
 function ModalWithForm({
   children,
   buttonText,
