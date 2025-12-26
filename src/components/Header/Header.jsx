@@ -3,7 +3,7 @@ import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 
-function Header({ handleAddClick, weatherData, value, setValue }) {
+function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -16,10 +16,7 @@ function Header({ handleAddClick, weatherData, value, setValue }) {
         {currentDate}, {weatherData.city}
       </p>
       <div className="header__btn-container">
-        <ToggleSwitch
-          isOn={value}
-          handleToggleSwitch={() => setValue(!value)}
-        />
+        <ToggleSwitch />
 
         <button
           onClick={handleAddClick}
