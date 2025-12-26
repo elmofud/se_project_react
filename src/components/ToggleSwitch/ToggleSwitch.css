@@ -1,40 +1,42 @@
-.toggleSwitch-checkbox {
+.toggleSwitch__checkbox {
   height: 0;
   width: 0;
   visibility: hidden;
 }
 
-.toggleSwitch-label {
+.toggleSwitch__label {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 100px;
-  height: 50px;
-  background: grey;
-  border-radius: 100px;
+  overflow: hidden;
+  width: 56px;
+  height: 28px;
+  background: #fff;
+  border-radius: 20px;
+  border: 2px solid #000000;
   position: relative;
   transition: background-color 0.2s;
 }
 
-.toggleSwitch-label .toggleSwitch-button {
+.toggleSwitch__label .toggleSwitch__button {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 45px;
-  height: 45px;
-  border-radius: 45px;
+  /* top: 2px; */
+  /* left: 2px; */
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
   transition: 0.2s;
-  background: #fff;
-  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  background: #000000;
+  /* box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29); */
 }
 
-.toggleSwitch-checkbox:checked + .toggleSwitch-label .toggleSwitch-button {
-  left: calc(100% - 2px);
+.toggleSwitch__checkbox:checked + .toggleSwitch__label .toggleSwitch__button {
+  left: calc(100%);
   transform: translateX(-100%);
 }
 
-.toggleSwitch-label:active .toggleSwitch-button {
+.toggleSwitch__label:active .toggleSwitch__button {
   width: 60px;
 }

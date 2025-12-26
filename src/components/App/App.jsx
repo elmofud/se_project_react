@@ -76,11 +76,12 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <ToggleSwitch
-          isOn={value}
-          handleToggleSwitch={() => setValue(!value)}
+        <Header
+          handleAddClick={handleAddClick}
+          weatherData={weatherData}
+          value={value}
+          setValue={setValue}
         />
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main
           weatherData={weatherData}
           handleCardClick={handleCardClick}

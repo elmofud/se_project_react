@@ -7,12 +7,12 @@ const ToggleSwitch = ({ isOn, handleToggleSwitch }) => {
       <input
         checked={isOn}
         onChange={handleToggleSwitch}
-        className="toggleSwitch-checkbox"
+        className="toggleSwitch__checkbox"
         id={`toggleSwitch-new`}
         type="checkbox"
       />
-      <label className="toggleSwitch-label" htmlFor={`toggleSwitch-new`}>
-        <span className={`toggleSwitch-button`} />
+      <label className="toggleSwitch__label" htmlFor={`toggleSwitch-new`}>
+        <span className={`toggleSwitch__button`} />
       </label>
     </>
   );
