@@ -7,6 +7,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 import "./App.css";
 
@@ -22,6 +23,7 @@ function App() {
   const [inputClothesName, setInputClothesName] = useState("");
   const [inputClothesUrl, setInputClothesUrl] = useState("");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [value, setValue] = useState(false);
 
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
@@ -74,6 +76,10 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
+        <ToggleSwitch
+          isOn={value}
+          handleToggleSwitch={() => setValue(!value)}
+        />
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main
           weatherData={weatherData}
