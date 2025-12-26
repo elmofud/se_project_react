@@ -13,6 +13,8 @@ const ToggleSwitch = ({ isOn, handleToggleSwitch }) => {
       />
       <label className="toggleSwitch__label" htmlFor={`toggleSwitch-new`}>
         <span className={`toggleSwitch__button`} />
+        <span className="toggleSwitch__text toggleSwitch__text_F">F</span>
+        <span className="toggleSwitch__text toggleSwitch__text_C">C</span>
       </label>
     </>
   );

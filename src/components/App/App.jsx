@@ -24,6 +24,7 @@ function App() {
   const [inputClothesUrl, setInputClothesUrl] = useState("");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [value, setValue] = useState(false);
+  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState(`F`);
 
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
