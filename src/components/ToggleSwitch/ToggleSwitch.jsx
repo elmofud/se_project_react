@@ -7,7 +7,6 @@ const ToggleSwitch = () => {
   const { handleToggleSwitchChange, currentTemperatureUnit } = useContext(
     CurrentTemperatureUnitContext
   );
-  console.log(currentTemperatureUnit);
   return (
     <>
       <input
@@ -18,8 +17,24 @@ const ToggleSwitch = () => {
       />
       <label className="toggleSwitch__label" htmlFor={`toggleSwitch-new`}>
         <span className={`toggleSwitch__button`} />
-        <span className="toggleSwitch__text toggleSwitch__text_F">F</span>
-        <span className="toggleSwitch__text toggleSwitch__text_C">C</span>
+        <span
+          className={`toggleSwitch__text  toggleSwitch__text_F ${
+            currentTemperatureUnit === "F"
+              ? "toggleSwitch__text_color_white"
+              : ""
+          }`}
+        >
+          F
+        </span>
+        <span
+          className={`toggleSwitch__text  toggleSwitch__text_C ${
+            currentTemperatureUnit === "C"
+              ? "toggleSwitch__text_color_white"
+              : ""
+          }`}
+        >
+          C
+        </span>
       </label>
     </>
   );
