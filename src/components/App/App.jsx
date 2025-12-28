@@ -8,10 +8,9 @@ import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-
 import "./App.css";
-import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -103,7 +102,24 @@ function App() {
           />
           <Footer />
           <div>
-            <AddItemModal />
+            <ModalWithForm
+              title="New garment"
+              buttonText="Add garment"
+              // activeModal={activeModal}
+              onClose={handleCloseClick}
+              onSubmit={handleClothesSubmit}
+              name="add-garment"
+              isOpen={activeModal === "add-garment"}
+            />
+            <AddItemModal
+              handleClothesUrlChange={handleClothesUrlChange}
+              handleClothesNameChange={handleClothesNameChange}
+              handleOptionChange={handleOptionChange}
+              activeModal={activeModal}
+              inputClothesName={inputClothesName}
+              inputClothesUrl={inputClothesUrl}
+              selectedWeather={selectedWeather}
+            />
             <ItemModal
               isOpen={activeModal === "preview"}
               onClose={handleCloseClick}

@@ -2,18 +2,18 @@
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import React from "react";
 
-const AddItemModal = ({ isOpen, onAddItem, OnCloseModal }) => {
+const AddItemModal = ({
+  activeModal,
+  inputClothesName,
+  inputClothesUrl,
+  handleClothesNameChange,
+  handleClothesUrlChange,
+  handleOptionChange,
+  selectedWeather,
+}) => {
   return (
     /*Don't forget to pass appropriate props to ModalWithform*/
-    <ModalWithForm
-      title="New garment"
-      buttonText="Add garment"
-      // activeModal={activeModal}
-      onClose={handleCloseClick}
-      onSubmit={handleClothesSubmit}
-      name="add-garment"
-      isOpen={activeModal === "add-garment"}
-    >
+    <ModalWithForm>
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input
