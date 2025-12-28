@@ -9,6 +9,9 @@
 .weather-card__temp {
   margin: 0;
   position: absolute;
+  display: inline-block;
+  text-align: right;
+  min-width: 3ch;
   font-size: 36px;
   line-height: 40px;
   top: 20px;

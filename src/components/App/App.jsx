@@ -14,9 +14,11 @@ import "./App.css";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
-    type: "cold",
+    type: "",
+    condition: "",
     temp: { F: 999, C: 999 },
     city: "",
+    isDay: false,
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -25,6 +27,7 @@ function App() {
   const [inputClothesUrl, setInputClothesUrl] = useState("");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
+  const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
 
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
@@ -75,6 +78,7 @@ function App() {
       .then((data) => {
         const filterDate = filterWeatherData(data);
         setWeatherData(filterDate);
+        setIsWeatherDataLoad(true);
       })
       .catch(console.error);
   }, []);
@@ -94,6 +98,7 @@ function App() {
             weatherData={weatherData}
             handleCardClick={handleCardClick}
             clothingItems={clothingItems}
+            isWeatherDataLoad={isWeatherDataLoad}
           />
           <Footer />
           <div>
