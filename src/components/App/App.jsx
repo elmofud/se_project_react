@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
+import AddItemModal from "../AddItemModal/AddItemModal";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
@@ -11,6 +11,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 import "./App.css";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -102,90 +103,7 @@ function App() {
           />
           <Footer />
           <div>
-            <ModalWithForm
-              title="New garment"
-              buttonText="Add garment"
-              // activeModal={activeModal}
-              onClose={handleCloseClick}
-              onSubmit={handleClothesSubmit}
-              name="add-garment"
-              isOpen={activeModal === "add-garment"}
-            >
-              <label htmlFor="name" className="modal__label">
-                Name{" "}
-                <input
-                  required
-                  type="text"
-                  className="modal__input"
-                  id="name"
-                  placeholder="Name"
-                  value={inputClothesName}
-                  onChange={handleClothesNameChange}
-                />
-              </label>
-              <label htmlFor="imageUrl" className="modal__label">
-                Image{" "}
-                <input
-                  required
-                  type="url"
-                  className="modal__input"
-                  id="imageUrl"
-                  placeholder="Image URL"
-                  value={inputClothesUrl}
-                  onChange={handleClothesUrlChange}
-                />
-              </label>
-              <fieldset className="modal__radio-buttons">
-                <legend className="modal__legend">
-                  Select the weather type:
-                </legend>
-                <label
-                  htmlFor="hot"
-                  className="modal__label modal__label_type_radio"
-                >
-                  <input
-                    id="hot"
-                    type="radio"
-                    className="modal__radio-input"
-                    name="climate"
-                    value="hot"
-                    checked={selectedWeather === `hot`}
-                    onChange={handleOptionChange}
-                  />
-                  hot
-                </label>
-                <label
-                  htmlFor="warm"
-                  className="modal__label modal__label_type_radio"
-                >
-                  <input
-                    id="warm"
-                    type="radio"
-                    className="modal__radio-input"
-                    name="climate"
-                    value="warm"
-                    checked={selectedWeather === `warm`}
-                    onChange={handleOptionChange}
-                  />
-                  warm
-                </label>
-                <label
-                  htmlFor="cold"
-                  className="modal__label modal__label_type_radio"
-                >
-                  <input
-                    id="cold"
-                    type="radio"
-                    className="modal__radio-input"
-                    name="climate"
-                    value="cold"
-                    checked={selectedWeather === `cold`}
-                    onChange={handleOptionChange}
-                  />
-                  cold
-                </label>
-              </fieldset>
-            </ModalWithForm>
+            <AddItemModal />
             <ItemModal
               isOpen={activeModal === "preview"}
               onClose={handleCloseClick}
