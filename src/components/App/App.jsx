@@ -20,9 +20,6 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [selectedWeather, setSelectedWeather] = useState("");
-  const [inputClothesName, setInputClothesName] = useState("");
-  const [inputClothesUrl, setInputClothesUrl] = useState("");
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
@@ -43,17 +40,6 @@ function App() {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
-  const handleClothesUrlChange = (evt) => {
-    setInputClothesUrl(evt.target.value);
-  };
-
-  const handleClothesNameChange = (evt) => {
-    setInputClothesName(evt.target.value);
-  };
-
-  const handleOptionChange = (evt) => {
-    setSelectedWeather(evt.target.value);
-  };
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
