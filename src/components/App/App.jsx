@@ -29,7 +29,7 @@ function App() {
       _id: Date.now(),
       name: inputNewItem.name,
       link: inputNewItem.link,
-      weather: inputNewItem.weatherType,
+      weather: inputNewItem.weather,
     };
 
     setClothingItems([...clothingItems, newCardData]);
