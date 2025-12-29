@@ -1,19 +1,27 @@
-//onaddItem refers to the submit handler declared in App.jsx
+//onaddItem refers to the submit handler declared in App.j
+import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import React from "react";
-
 const AddItemModal = ({
-  activeModal,
+  isOpen,
+  onClose,
+  onAddItem,
   inputClothesName,
   inputClothesUrl,
   handleClothesNameChange,
   handleClothesUrlChange,
   handleOptionChange,
   selectedWeather,
+  buttonText,
 }) => {
   return (
-    /*Don't forget to pass appropriate props to ModalWithform*/
-    <ModalWithForm>
+    <ModalWithForm
+      isOpen={isOpen}
+      title="New garment"
+      onClose={onClose}
+      name="add-garment"
+      onAddItem={onAddItem}
+      buttonText={buttonText}
+    >
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input

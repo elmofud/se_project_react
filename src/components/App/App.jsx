@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -7,8 +7,6 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./App.css";
 
@@ -34,7 +32,7 @@ function App() {
     const newItem = {
       _id: Date.now(),
       name: inputClothesName,
-      imageUrl: inputClothesUrl,
+      link: inputClothesUrl,
       weather: selectedWeather,
     };
     handleAddItem(newItem);
@@ -102,23 +100,25 @@ function App() {
           />
           <Footer />
           <div>
-            <ModalWithForm
+            {/* <ModalWithForm
               title="New garment"
               buttonText="Add garment"
-              // activeModal={activeModal}
               onClose={handleCloseClick}
-              onSubmit={handleClothesSubmit}
+              onAddItem={handleClothesSubmit}
               name="add-garment"
               isOpen={activeModal === "add-garment"}
-            />
+            /> */}
             <AddItemModal
               handleClothesUrlChange={handleClothesUrlChange}
               handleClothesNameChange={handleClothesNameChange}
               handleOptionChange={handleOptionChange}
-              activeModal={activeModal}
               inputClothesName={inputClothesName}
               inputClothesUrl={inputClothesUrl}
               selectedWeather={selectedWeather}
+              buttonText="Add garment"
+              onAddItem={handleClothesSubmit}
+              isOpen={activeModal === "add-garment"}
+              onClose={handleCloseClick}
             />
             <ItemModal
               isOpen={activeModal === "preview"}

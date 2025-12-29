@@ -9,7 +9,7 @@ function ModalWithForm({
   onClose,
   name,
   isOpen,
-  onSubmit,
+  onAddItem,
 }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -45,7 +45,7 @@ function ModalWithForm({
             className="modal__close-button-image"
           />
         </button>
-        <form className="modal__form" name={name} onSubmit={onSubmit}>
+        <form className="modal__form" name={name} onSubmit={onAddItem}>
           {children}
           <button className="modal__submit" type="submit">
             {buttonText}
