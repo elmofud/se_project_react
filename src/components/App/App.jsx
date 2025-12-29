@@ -27,19 +27,15 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
 
-  const handleClothesSubmit = (evt) => {
-    evt.preventDefault();
-    const newItem = {
+  const onAddItem = (inputNewItem) => {
+    const newCardData = {
       _id: Date.now(),
-      name: inputClothesName,
-      link: inputClothesUrl,
-      weather: selectedWeather,
+      name: inputNewItem.name,
+      link: inputNewItem.link,
+      weather: inputNewItem.weatherType,
     };
-    handleAddItem(newItem);
-  };
 
-  const handleAddItem = (newItem) => {
-    setClothingItems([...clothingItems, newItem]);
+    setClothingItems([...clothingItems, newCardData]);
     setActiveModal("");
   };
 
@@ -100,23 +96,15 @@ function App() {
           />
           <Footer />
           <div>
-            {/* <ModalWithForm
-              title="New garment"
-              buttonText="Add garment"
-              onClose={handleCloseClick}
-              onAddItem={handleClothesSubmit}
-              name="add-garment"
-              isOpen={activeModal === "add-garment"}
-            /> */}
             <AddItemModal
-              handleClothesUrlChange={handleClothesUrlChange}
-              handleClothesNameChange={handleClothesNameChange}
-              handleOptionChange={handleOptionChange}
-              inputClothesName={inputClothesName}
-              inputClothesUrl={inputClothesUrl}
-              selectedWeather={selectedWeather}
+              // handleClothesUrlChange={handleClothesUrlChange}
+              // handleClothesNameChange={handleClothesNameChange}
+              // handleOptionChange={handleOptionChange}
+              // inputClothesName={inputClothesName}
+              // inputClothesUrl={inputClothesUrl}
+              // selectedWeather={selectedWeather}
               buttonText="Add garment"
-              onAddItem={handleClothesSubmit}
+              onAddItem={onAddItem}
               isOpen={activeModal === "add-garment"}
               onClose={handleCloseClick}
             />

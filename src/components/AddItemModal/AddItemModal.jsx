@@ -1,25 +1,38 @@
-//onaddItem refers to the submit handler declared in App.j
+import { useForm } from "../../Hooks/useForm";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({
   isOpen,
   onClose,
   onAddItem,
-  inputClothesName,
-  inputClothesUrl,
-  handleClothesNameChange,
-  handleClothesUrlChange,
-  handleOptionChange,
-  selectedWeather,
+  // inputClothesName,
+  // inputClothesUrl,
+  // handleClothesNameChange,
+  // handleClothesUrlChange,
+  // handleOptionChange,
+  // selectedWeather,
   buttonText,
 }) => {
+  const defaultValues = {
+    name: "",
+    link: "",
+    weatherType: "",
+  };
+  const { values, handleChange } = useForm(defaultValues);
+  console.log(values);
+
+  const handleClothesSubmit = (evt) => {
+    evt.preventDefault();
+    onAddItem(values);
+  };
+
   return (
     <ModalWithForm
       isOpen={isOpen}
       title="New garment"
       onClose={onClose}
       name="add-garment"
-      onAddItem={onAddItem}
+      onSubmit={handleClothesSubmit}
       buttonText={buttonText}
     >
       <label htmlFor="name" className="modal__label">
@@ -30,20 +43,26 @@ const AddItemModal = ({
           className="modal__input"
           id="name"
           placeholder="Name"
-          value={inputClothesName}
-          onChange={handleClothesNameChange}
+          name="name"
+          // value={inputClothesName}
+          value={values.name}
+          // onChange={handleClothesNameChange}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         Image{" "}
         <input
           required
+          name="link"
           type="url"
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          value={inputClothesUrl}
-          onChange={handleClothesUrlChange}
+          // value={inputClothesUrl}
+          // onChange={handleClothesUrlChange}
+          value={values.link}
+          onChange={handleChange}
         />
       </label>
       <fieldset className="modal__radio-buttons">
@@ -53,10 +72,11 @@ const AddItemModal = ({
             id="hot"
             type="radio"
             className="modal__radio-input"
-            name="climate"
+            name="weatherType"
             value="hot"
-            checked={selectedWeather === `hot`}
-            onChange={handleOptionChange}
+            checked={values.weatherType === `hot`}
+            // onChange={handleOptionChange}
+            onChange={handleChange}
           />
           hot
         </label>
@@ -65,10 +85,11 @@ const AddItemModal = ({
             id="warm"
             type="radio"
             className="modal__radio-input"
-            name="climate"
+            name="weatherType"
             value="warm"
-            checked={selectedWeather === `warm`}
-            onChange={handleOptionChange}
+            checked={values.weatherType === `warm`}
+            // onChange={handleOptionChange}
+            onChange={handleChange}
           />
           warm
         </label>
@@ -77,10 +98,11 @@ const AddItemModal = ({
             id="cold"
             type="radio"
             className="modal__radio-input"
-            name="climate"
+            name="weatherType"
             value="cold"
-            checked={selectedWeather === `cold`}
-            onChange={handleOptionChange}
+            checked={values.weatherType === `cold`}
+            // onChange={handleOptionChange}
+            onChange={handleChange}
           />
           cold
         </label>
