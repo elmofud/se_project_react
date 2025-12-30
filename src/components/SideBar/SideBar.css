@@ -1,0 +1,15 @@
+.sideBar__profile {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 16px;
+}
+.sideBar__userName {
+  font-size: 20px;
+  color: black;
+}
+
+.sideBar__avatar {
+  margin: 0;
+  height: 56px;
+  width: 56px;
+}

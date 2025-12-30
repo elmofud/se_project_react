@@ -1,6 +1,16 @@
 import React from "react";
+import avatar from "../../assets/avatar.png";
+
+import "./SideBar.css";
 function SideBar() {
-  return <p>sideBar texting</p>;
+  return (
+    <aside className="sidebar">
+      <div className="sideBar__profile">
+        <p className="sideBar__username">Terrence Tegegne</p>
+        <img className="sideBar__avatar" src={avatar} alt="Terrence Tegegne" />
+      </div>
+    </aside>
+  );
 }
 
 export default SideBar;

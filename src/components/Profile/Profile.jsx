@@ -1,11 +1,15 @@
 import React from "react";
+import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile() {
+function Profile({ clothingItems, handleCardClick }) {
   return (
-    <section>
+    <section className="profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection
+        clothingItems={clothingItems}
+        handleCardClick={handleCardClick}
+      />
     </section>
   );
 }

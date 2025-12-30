@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -91,10 +91,15 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<Profile />}>
-              <Route path="sideBar" element={<SideBar />} />
-              <Route path="clothesSection" element={<ClothesSection />} />
-            </Route>
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
           </Routes>
 
           <Footer />
