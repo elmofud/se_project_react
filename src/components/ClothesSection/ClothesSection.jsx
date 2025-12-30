@@ -1,6 +1,6 @@
 import React from "react";
 function ClothesSection() {
-  return;
+  return <p>ClothesSection</p>;
 }
 
 export default ClothesSection;

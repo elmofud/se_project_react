@@ -1,6 +1,6 @@
 import React from "react";
 function SideBar() {
-  return;
+  return <p>sideBar texting</p>;
 }
 
 export default SideBar;

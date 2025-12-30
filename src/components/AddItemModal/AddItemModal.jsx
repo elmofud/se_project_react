@@ -1,18 +1,7 @@
 import { useForm } from "../../Hooks/useForm";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-const AddItemModal = ({
-  isOpen,
-  onClose,
-  onAddItem,
-  // inputClothesName,
-  // inputClothesUrl,
-  // handleClothesNameChange,
-  // handleClothesUrlChange,
-  // handleOptionChange,
-  // selectedWeather,
-  buttonText,
-}) => {
+const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
   const defaultValues = {
     name: "",
     link: "",
@@ -44,9 +33,7 @@ const AddItemModal = ({
           id="name"
           placeholder="Name"
           name="name"
-          // value={inputClothesName}
           value={values.name}
-          // onChange={handleClothesNameChange}
           onChange={handleChange}
         />
       </label>
@@ -59,8 +46,6 @@ const AddItemModal = ({
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          // value={inputClothesUrl}
-          // onChange={handleClothesUrlChange}
           value={values.link}
           onChange={handleChange}
         />
@@ -75,7 +60,6 @@ const AddItemModal = ({
             name="weather"
             value="hot"
             checked={values.weather === `hot`}
-            // onChange={handleOptionChange}
             onChange={handleChange}
           />
           hot
@@ -88,7 +72,6 @@ const AddItemModal = ({
             name="weather"
             value="warm"
             checked={values.weather === `warm`}
-            // onChange={handleOptionChange}
             onChange={handleChange}
           />
           warm
@@ -101,7 +84,6 @@ const AddItemModal = ({
             name="weather"
             value="cold"
             checked={values.weather === `cold`}
-            // onChange={handleOptionChange}
             onChange={handleChange}
           />
           cold

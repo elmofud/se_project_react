@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -8,6 +9,10 @@ import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import ClothesSection from "../ClothesSection/ClothesSection";
+import Profile from "../Profile/Profile";
+
+import SideBar from "../SideBar/SideBar";
 import "./App.css";
 
 function App() {
@@ -74,21 +79,27 @@ function App() {
             currentTemperatureUnit={currentTemperatureUnit}
             setCurrentTemperatureUnit={setCurrentTemperatureUnit}
           />
-          <Main
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-            clothingItems={clothingItems}
-            isWeatherDataLoad={isWeatherDataLoad}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                  isWeatherDataLoad={isWeatherDataLoad}
+                />
+              }
+            />
+            <Route path="/profile" element={<Profile />}>
+              <Route path="sideBar" element={<SideBar />} />
+              <Route path="clothesSection" element={<ClothesSection />} />
+            </Route>
+          </Routes>
+
           <Footer />
           <div>
             <AddItemModal
-              // handleClothesUrlChange={handleClothesUrlChange}
-              // handleClothesNameChange={handleClothesNameChange}
-              // handleOptionChange={handleOptionChange}
-              // inputClothesName={inputClothesName}
-              // inputClothesUrl={inputClothesUrl}
-              // selectedWeather={selectedWeather}
               buttonText="Add garment"
               onAddItem={onAddItem}
               isOpen={activeModal === "add-garment"}
