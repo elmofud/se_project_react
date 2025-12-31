@@ -4,11 +4,11 @@ import ItemCard from "../ItemCard/ItemCard";
 function ClothesSection({ clothingItems, handleCardClick }) {
   return (
     <div className="clothes-section">
-      <div>
-        <p>ClothesSection</p>;
-        <button className="clothesSection__btn">BUTTON</button>
+      <div className="clothes-section__row">
+        <p className="clothes-section__title"> Your Items</p>
+        <button className="clothes-section__btn">+ Add new</button>
       </div>
-      <ul className="clothesSection__list">
+      <ul className="clothes-section__list">
         {clothingItems.map((item) => {
           return (
             <ItemCard
