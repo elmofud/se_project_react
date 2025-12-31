@@ -49,6 +49,21 @@
   font-size: 24px;
 }
 
+.modal__delete-btn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.modal__delete-btn:hover {
+  background-color: aqua;
+}
+
+.modal__delete-image-btn {
+  border: none;
+}
+
 .modal__delete-block {
   color: #ff4d00;
+  border: none;
 }

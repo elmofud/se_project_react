@@ -21,9 +21,9 @@ function ItemModal({ isOpen, onClose, card }) {
           <div className="modal__delete-block">
             <button className="modal__delete-btn">
               <img
-                type="url"
-+                src={deleteItem}
-                alt="delete clothes button"
+                src={deleteItem}
+                alt="delete image icon"
+                className="modal__delete-image-btn"
               />
             </button>
           </div>
