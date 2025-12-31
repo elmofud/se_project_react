@@ -1,4 +1,5 @@
 import "./ItemModal.css";
+import deleteItem from "../../assets/deleteItem.png";
 import whiteCloseBtn from "../../assets/whiteCloseButton.png";
 function ItemModal({ isOpen, onClose, card }) {
   return (
@@ -13,8 +14,19 @@ function ItemModal({ isOpen, onClose, card }) {
         </button>
         <img src={card.link} alt={card.name} className="modal__image" />
         <div className="modal__card-footer">
-          <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">Weather: {card.weather}</p>
+          <div className="modal__description">
+            <h2 className="modal__caption">{card.name}</h2>
+            <p className="modal__weather">Weather: {card.weather}</p>
+          </div>
+          <div className="modal__delete-block">
+            <button className="modal__delete-btn">
+              <img
+                type="url"
++                src={deleteItem}
+                alt="delete clothes button"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>

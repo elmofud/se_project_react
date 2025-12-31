@@ -26,7 +26,6 @@ header {
   line-height: 24px;
   color: #000000;
   border: none;
-
   background-color: #ffffff;
   cursor: pointer;
 }
@@ -41,8 +40,18 @@ header {
   gap: 12px;
 }
 
+.header__nav-Link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.header__nav-link-logo {
+  cursor: pointer;
+}
+
 .header__username {
   margin: 0;
+  white-space: nowrap;
 }
 
 .header__avatar {
