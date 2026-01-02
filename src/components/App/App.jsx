@@ -1,7 +1,8 @@
-import { Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -9,10 +10,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import ClothesSection from "../ClothesSection/ClothesSection";
 import Profile from "../Profile/Profile";
 
-import SideBar from "../SideBar/SideBar";
 import "./App.css";
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-
+  console.log("Current render - activeModal:", activeModal);
   const onAddItem = (inputNewItem) => {
     const newCardData = {
       _id: Date.now(),
@@ -57,6 +56,20 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
+  const openConfirmationModal = () => {
+    console.log("openconfirmationModal called");
+    setActiveModal("delete-confirmation");
+  };
+
+  const handleCardDelete = () => {
+    console.log("your are deleted");
+  };
+
+  // Add this as a NEW useEffect, don't modify your existing one
+  useEffect(() => {
+    console.log("activeModal changed to:", activeModal);
+  }, [activeModal]); // Notice the dependency array has activeModal
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -113,6 +126,13 @@ function App() {
             <ItemModal
               isOpen={activeModal === "preview"}
               onClose={handleCloseClick}
+              card={selectedCard}
+              openConfirmationModal={openConfirmationModal}
+            />
+            <DeleteConfirmationModal
+              isOpen={activeModal === "delete-confirmation"}
+              onClose={handleCloseClick}
+              onConfirm={handleCardDelete}
               card={selectedCard}
             />
           </div>

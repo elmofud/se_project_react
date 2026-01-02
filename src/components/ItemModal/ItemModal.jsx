@@ -1,9 +1,33 @@
+import { useEffect } from "react";
 import "./ItemModal.css";
 import deleteItem from "../../assets/deleteItem.png";
 import whiteCloseBtn from "../../assets/whiteCloseButton.png";
-function ItemModal({ isOpen, onClose, card }) {
+function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
+  const handleOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    const handleEscapeKey = (evt) => {
+      if (evt.key === "Escape") {
+        onClose();
+      }
+    };
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscapeKey);
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [isOpen, onClose]);
+
   return (
-    <div onClick={onClose} className={`modal ${isOpen && "modal_opened"}`}>
+    <div
+      onClick={handleOverlayClick}
+      className={`modal ${isOpen && "modal_opened"}`}
+    >
       <div className="modal__content modal_type_image">
         <button onClick={onClose} type="button" className="modal__close">
           <img
@@ -19,7 +43,10 @@ function ItemModal({ isOpen, onClose, card }) {
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
           <div className="modal__delete-block">
-            <button className="modal__delete-btn">
+            <button
+              onClick={openConfirmationModal}
+              className="modal__delete-btn"
+            >
               <img
                 src={deleteItem}
                 alt="delete image icon"

@@ -20,7 +20,7 @@
   font-size: 16px;
 }
 
-.modal__close {
+.modal__close-btn {
   position: absolute;
   top: 20px;
   right: 28px;
@@ -43,6 +43,7 @@
 .modal__close-button-image {
   display: flex;
   flex-direction: column;
+  background-color: transparent;
   width: 100%;
   padding: 0;
   margin: 0;

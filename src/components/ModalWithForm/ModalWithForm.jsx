@@ -38,7 +38,7 @@ function ModalWithForm({
     >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
-        <button onClick={onClose} type="button" className="modal__close">
+        <button onClick={onClose} type="button" className="modal__close-btn">
           <img
             src={closeButton}
             alt="black X image close"

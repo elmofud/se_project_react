@@ -1,9 +1,16 @@
-.Modal {
-  position: relative;
+/* .modal {
   width: 436px;
   display: flex;
   justify-content: center;
+} */
+
+/* .modal_opened {
+  visibility: visible;
 }
+
+.modal__content {
+  position: relative;
+} */
 
 .modal_type_image {
   width: 100%;
@@ -13,11 +20,11 @@
   padding: 0;
 }
 
-.modal__close-button-image {
+/* .modal__close-button-image {
   top: 20px;
   right: 20px;
   background-color: transparent;
-}
+} */
 
 .modal__image {
   border-radius: 12px 12px 0 0;

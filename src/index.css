@@ -1,1 +1,4 @@
 @import url(./vendor/normalize.css);
+@import url(./components/ModalWithForm/ModalWithForm.css);
+@import url(./components/ItemModal/ItemModal.css);
+@import url(./components/DeleteConfirmationModal/DeleteConfirmationModal.css);
