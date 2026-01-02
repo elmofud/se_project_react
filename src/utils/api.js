@@ -1,5 +1,5 @@
-import { handleResponse, request } from "./helpers";
-const baseUrl = "http://localhost:3002";
+import { request } from "./helpers";
+const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
 
 export const getItems = () => {
@@ -15,7 +15,7 @@ export const deleteItems = (selectedItemId) => {
   });
 };
 
-export const addItems = ({ name, imageUrl, weather }) => {
+export const addItem = ({ name, imageUrl, weather }) => {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers,

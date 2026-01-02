@@ -5,6 +5,6 @@ export function handleResponse(res) {
   return Promise.reject(`Error: ${res.status}`);
 }
 
-export function request(url, options) {
+export const request = (url, options) => {
   return fetch(url, options).then(handleResponse);
-}
+};

@@ -8,10 +8,10 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
     weather: "",
   };
   const { values, handleChange } = useForm(defaultValues);
-  console.log(values);
 
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
+    console.log(values);
     onAddItem(values);
   };
 

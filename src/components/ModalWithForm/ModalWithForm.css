@@ -95,12 +95,12 @@
 }
 
 .modal__submit {
-  background-color: #0000004d;
+  background-color: #000000;
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 16px;
   line-height: 20px;
-  border: 1px solid #0000004d;
+  border: 1px solid #000000;
   color: #ffffff;
 }
 

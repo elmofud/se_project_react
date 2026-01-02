@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getItems, addItem } from "../../utils/api";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -28,17 +29,34 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
   console.log("Current render - activeModal:", activeModal);
+
   const onAddItem = (inputNewItem) => {
     const newCardData = {
-      _id: Date.now(),
+      // _id: Date.now(),
       name: inputNewItem.name,
-      link: inputNewItem.link,
+      imageUrl: inputNewItem.link,
       weather: inputNewItem.weather,
     };
 
-    setClothingItems([...clothingItems, newCardData]);
+    addItem(newCardData)
+      .then((data) => {
+        setClothingItems([...clothingItems, data]);
+        closeAllModals();
+      })
+      .catch((error) => {
+        console.error("Error adding item:", error);
+      });
+  };
+
+  // setClothingItems([...clothingItems, newCardData]);
+  const closeAllModals = () => {
     setActiveModal("");
   };
+
+  // const handleAddItemSubmit = (items){
+  //   setClothingItems([items, ...clothingItems]);
+  //   closeAllModals();
+  // }
 
   const handleToggleSwitchChange = (evt) => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -65,6 +83,10 @@ function App() {
   const handleCardDelete = () => {
     console.log("your are deleted");
   };
+
+  useEffect(() => {
+    getItems();
+  });
 
   // Add this as a NEW useEffect, don't modify your existing one
   useEffect(() => {
