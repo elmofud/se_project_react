@@ -1,9 +1,16 @@
-.Modal {
-  position: relative;
+/* .modal {
   width: 436px;
   display: flex;
   justify-content: center;
+} */
+
+/* .modal_opened {
+  visibility: visible;
 }
+
+.modal__content {
+  position: relative;
+} */
 
 .modal_type_image {
   width: 100%;
@@ -13,11 +20,11 @@
   padding: 0;
 }
 
-.modal__close-button-image {
+/* .modal__close-button-image {
   top: 20px;
   right: 20px;
   background-color: transparent;
-}
+} */
 
 .modal__image {
   border-radius: 12px 12px 0 0;
@@ -28,10 +35,14 @@
 .modal__card-footer {
   height: 112px;
   display: flex;
+
+  padding: 20px 32px 32px 32px;
+  justify-content: space-between;
+}
+.modal__description {
+  display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 20px 0 32px 32px;
-  justify-content: center;
 }
 
 .modal__caption {
@@ -43,4 +54,23 @@
   margin: 0;
   padding: 0;
   font-size: 24px;
+}
+
+.modal__delete-btn {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.modal__delete-btn:hover {
+  background-color: aqua;
+}
+
+.modal__delete-image-btn {
+  border: none;
+}
+
+.modal__delete-block {
+  color: #ff4d00;
+  border: none;
 }

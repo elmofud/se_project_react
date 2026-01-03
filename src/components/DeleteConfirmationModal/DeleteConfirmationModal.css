@@ -1,0 +1,51 @@
+.modal__content {
+  background-color: #ffffff;
+  position: relative;
+  padding: 28px 28px 36px;
+  box-sizing: border-box;
+  max-width: 496px;
+  width: 100%;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+.modal__content_padding {
+  padding: 60px 28px 60px;
+}
+
+.modal__buttonContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__text-content {
+  text-align: center;
+}
+
+.modal__warning-msg {
+  margin: 0 0 40px 0;
+}
+
+.modal__buttonContent {
+  gap: 24px;
+}
+
+.modal__confirm-btn {
+  border: none;
+  background-color: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+}
+
+.modal__confirm-btn:hover {
+  color: aqua;
+}
+
+.modal__cancel-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.modal__cancel-btn:hover {
+  color: aquamarine;
+}

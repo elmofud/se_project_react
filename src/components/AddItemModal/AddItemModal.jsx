@@ -4,11 +4,10 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
   const defaultValues = {
     name: "",
-    link: "",
+    imageUrl: "",
     weather: "",
   };
   const { values, handleChange } = useForm(defaultValues);
-  console.log(values);
 
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
@@ -41,12 +40,12 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
         Image{" "}
         <input
           required
-          name="link"
+          name="imageUrl"
           type="url"
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          value={values.link}
+          value={values.imageUrl}
           onChange={handleChange}
         />
       </label>
