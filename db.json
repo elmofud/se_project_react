@@ -131,6 +131,42 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
       "weather": "cold",
       "_id": 21
+    },
+    {
+      "name": "shirt",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
+      "weather": "cold",
+      "_id": 23
+    },
+    {
+      "name": "tracey",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "cold",
+      "_id": 24
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Scarf.png?etag=74efbee93810c926b5507e862c6cb76c",
+      "weather": "cold",
+      "_id": 25
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Scarf.png?etag=74efbee93810c926b5507e862c6cb76c",
+      "weather": "cold",
+      "_id": 26
+    },
+    {
+      "name": "mesalamines ",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "cold",
+      "_id": 28
+    },
+    {
+      "name": "tracey",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
+      "weather": "cold",
+      "_id": 29
     }
   ]
 }

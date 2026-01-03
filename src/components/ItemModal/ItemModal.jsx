@@ -36,7 +36,7 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
             className="modal__close-button-image"
           />
         </button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__card-footer">
           <div className="modal__description">
             <h2 className="modal__caption">{card.name}</h2>
@@ -44,7 +44,8 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
           </div>
           <div className="modal__delete-block">
             <button
-              onClick={openConfirmationModal}
+              type="button"
+              onClick={() => openConfirmationModal(card)}
               className="modal__delete-btn"
             >
               <img

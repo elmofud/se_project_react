@@ -4,3 +4,16 @@ export function handleResponse(res) {
   }
   return Promise.reject(`Error: ${res.status}`);
 }
+
+export function setButtonText(
+  btn,
+  isLoading,
+  defaultText = "Save",
+  loadingText = "Saving..."
+) {
+  if (isLoading) {
+    btn.textContent = loadingText;
+  } else {
+    btn.textContent = defaultText;
+  }
+}

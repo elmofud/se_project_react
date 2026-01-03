@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getItems, addItem } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 import Header from "../Header/Header";
 import { coordinates, apiKey } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -9,7 +9,6 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
-import { defaultClothingItems } from "../../utils/clothingItems";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 
@@ -23,40 +22,40 @@ function App() {
     city: "",
     isDay: false,
   });
+  const [cardToDelete, setCardToDelete] = useState(null);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-  console.log("Current render - activeModal:", activeModal);
-
   const onAddItem = (inputNewItem) => {
     const newCardData = {
-      // _id: Date.now(),
       name: inputNewItem.name,
-      imageUrl: inputNewItem.link,
+      imageUrl: inputNewItem.imageUrl,
       weather: inputNewItem.weather,
     };
 
     addItem(newCardData)
       .then((data) => {
-        setClothingItems([...clothingItems, data]);
-        closeAllModals();
+        setClothingItems([data, ...clothingItems]);
+        handleCloseClick();
       })
       .catch((error) => {
         console.error("Error adding item:", error);
       });
   };
 
-  // setClothingItems([...clothingItems, newCardData]);
-  const closeAllModals = () => {
-    setActiveModal("");
+  const handleCardDelete = () => {
+    deleteItem(cardToDelete._id)
+      .then(() => {
+        setClothingItems(
+          clothingItems.filter((item) => item._id !== cardToDelete._id)
+        );
+        closeActiveModal();
+        setCardToDelete(null);
+      })
+      .catch((error) => console.error("Error deleting item:", error));
   };
-
-  // const handleAddItemSubmit = (items){
-  //   setClothingItems([items, ...clothingItems]);
-  //   closeAllModals();
-  // }
 
   const handleToggleSwitchChange = (evt) => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -75,23 +74,15 @@ function App() {
     setSelectedCard(card);
   };
 
-  const openConfirmationModal = () => {
-    console.log("openconfirmationModal called");
+  const openConfirmationModal = (card) => {
+    setCardToDelete(card);
     setActiveModal("delete-confirmation");
   };
 
-  const handleCardDelete = () => {
-    console.log("your are deleted");
+  const closeActiveModal = () => {
+    setActiveModal("");
+    setCardToDelete(null);
   };
-
-  useEffect(() => {
-    getItems();
-  });
-
-  // Add this as a NEW useEffect, don't modify your existing one
-  useEffect(() => {
-    console.log("activeModal changed to:", activeModal);
-  }, [activeModal]); // Notice the dependency array has activeModal
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -99,6 +90,12 @@ function App() {
         const filterDate = filterWeatherData(data);
         setWeatherData(filterDate);
         setIsWeatherDataLoad(true);
+      })
+      .catch(console.error);
+
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
@@ -153,9 +150,8 @@ function App() {
             />
             <DeleteConfirmationModal
               isOpen={activeModal === "delete-confirmation"}
-              onClose={handleCloseClick}
               onConfirm={handleCardDelete}
-              card={selectedCard}
+              onClose={handleCloseClick}
             />
           </div>
         </div>

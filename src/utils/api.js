@@ -8,7 +8,7 @@ export const getItems = () => {
   });
 };
 
-export const deleteItems = (selectedItemId) => {
+export const deleteItem = (selectedItemId) => {
   return request(`${baseUrl}/items/${selectedItemId}`, {
     method: "DELETE",
     headers,
