@@ -26,7 +26,7 @@
 
 .clothes-section__btn {
   border: none;
-  background-color: white;
+  background-color: #ffffff;
   font-weight: 700;
   color: #00000099;
   margin: 0;
@@ -36,5 +36,5 @@
 }
 
 .clothes-section__btn:hover {
-  color: aqua;
+  color: #0000004d;
 }
