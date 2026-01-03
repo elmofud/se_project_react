@@ -29,7 +29,11 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
       className={`modal ${isOpen && "modal_opened"}`}
     >
       <div className="modal__content modal_type_image">
-        <button onClick={onClose} type="button" className="modal__close">
+        <button
+          onClick={onClose}
+          type="button"
+          className="modal__close modal__close--psotion"
+        >
           <img
             src={whiteCloseBtn}
             alt="white X image close button"
