@@ -1,9 +1,10 @@
-.modal__close--psotion {
-  top: 24px;
-  right: 24px;
+.modal__close-btn--position {
+  top: 26px;
+  right: 26px;
+  background-color: transparent;
 }
 
-.modal_type_image {
+.modal__content--preview {
   width: 100%;
   border: 1px solid #0000004d;
   border-radius: 16px;
@@ -53,10 +54,49 @@
 }
 
 .modal__delete-btn:hover {
-  filter: contrast(1.2);
-  background-color: lightgray;
+  filter: saturate(3);
 }
 
 .modal__delete-image-btn {
   border: none;
 }
+
+@media screen and (min-width: 1280px) {
+  .modal__content--preview {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .modal__image {
+    position: relative;
+    border-radius: 16px;
+  }
+
+  .modal__caption {
+    position: absolute;
+    top: 40px;
+    left: 30%;
+  }
+  .modal__card-footer {
+    flex-direction: column;
+    padding: 12px 0;
+    width: 325px;
+    justify-content: space-between;
+  }
+
+  .modal__close-btn--position {
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+  }
+}
+
+/* @media screen and (min-width: 1279px) {
+  .modal {
+    position: static;
+  }
+} */

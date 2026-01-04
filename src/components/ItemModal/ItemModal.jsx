@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./ItemModal.css";
 import deleteItem from "../../assets/deleteItem.png";
-import whiteCloseBtn from "../../assets/whiteCloseButton.png";
+import whiteCloseBtn from "../../assets/";
 function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -28,11 +28,11 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
       onClick={handleOverlayClick}
       className={`modal ${isOpen && "modal_opened"}`}
     >
-      <div className="modal__content modal_type_image">
+      <div className="modal__content modal__content--preview">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close modal__close--psotion"
+          className="modal__close-btn modal__close-btn--position"
         >
           <img
             src={whiteCloseBtn}
