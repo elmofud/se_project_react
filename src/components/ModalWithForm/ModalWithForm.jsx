@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import "./ModalWithForm.css";
-import closeButton from "../../assets/closeButton.png";
+import closeButton from "../../assets/blackCloseButton.png";
 function ModalWithForm({
   children,
   buttonText,
@@ -42,7 +42,7 @@ function ModalWithForm({
           <img
             src={closeButton}
             alt="black X image close"
-            className="modal__close-button-image"
+            className="modal__close-button-image modal__close-button-image--color"
           />
         </button>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
