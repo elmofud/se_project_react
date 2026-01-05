@@ -20,7 +20,7 @@
   font-size: 16px;
 }
 
-.modal__close-btn {
+.modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
@@ -43,7 +43,6 @@
 .modal__close-button-image {
   display: flex;
   flex-direction: column;
-  background-color: transparent;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -95,12 +94,12 @@
 }
 
 .modal__submit {
-  background-color: #000000;
+  background-color: #0000004d;
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 16px;
   line-height: 20px;
-  border: 1px solid #000000;
+  border: 1px solid #0000004d;
   color: #ffffff;
 }
 

@@ -1,0 +1,57 @@
+.modal__content_padding {
+  padding: 60px 28px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  border: 1px solid #0000004d;
+  border-radius: 20px;
+  width: 670px;
+  height: 280px;
+}
+
+.modal__buttonContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__warning-msg {
+  margin: 0;
+  text-align: center;
+  font-size: 20px;
+}
+
+.modal__buttonContent {
+  display: flex;
+  width: 200px;
+  gap: 24px;
+}
+
+.modal__confirm-btn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: transparent;
+  color: #ff4d00;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.modal__confirm-btn:hover {
+  color: #cc3d00;
+}
+
+.modal__cancel-btn {
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  color: #000000;
+}
+.modal__cancel-btn:hover {
+  color: #00000050;
+}
