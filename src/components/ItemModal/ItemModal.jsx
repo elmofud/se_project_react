@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "./ItemModal.css";
 import deleteItem from "../../assets/deleteItem.png";
-import whiteCloseBtn from "../../assets/";
+import whiteCloseBtn from "../../assets/whiteCloseButton.png";
 function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -43,10 +43,14 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__card-footer">
           <div className="modal__description">
-            <h2 className="modal__caption">{card.name}</h2>
-            <p className="modal__weather">Weather: {card.weather}</p>
+            <h2 className="modal__caption modal__caption--horizontal">
+              {card.name}
+            </h2>
+            <p className="modal__weather modal__weather--positionL">
+              Weather: {card.weather}
+            </p>
           </div>
-          <div className="modal__delete-block">
+          <div className="modal__delete-block modal__delete-block--disable">
             <button
               type="button"
               onClick={() => openConfirmationModal(card)}
