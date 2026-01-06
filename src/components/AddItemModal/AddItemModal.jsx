@@ -7,11 +7,12 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
     imageUrl: "",
     weather: "",
   };
-  const { values, handleChange } = useForm(defaultValues);
-
+  const { values, handleChange, handleReset } = useForm(defaultValues);
+  const isFormValid =
+    values.name.trim() && values.imageUrl.trim() && values.weather;
   const handleClothesSubmit = (evt) => {
     evt.preventDefault();
-    onAddItem(values);
+    onAddItem(values, handleReset);
   };
 
   return (
@@ -22,6 +23,7 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
       name="add-garment"
       onSubmit={handleClothesSubmit}
       buttonText={buttonText}
+      isFormValid={isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}

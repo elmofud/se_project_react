@@ -32,7 +32,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
           <img
             src={closeButton}
             alt="black close button"
-            className="modal__close-button-image modal__close-button-image--confirm"
+            className="modal__close-button-image"
           />
         </button>
         <div className="modal__text-content">

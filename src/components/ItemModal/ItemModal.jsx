@@ -37,11 +37,15 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
           <img
             src={whiteCloseBtn}
             alt="white X image close button"
-            className="modal__close-button-image"
+            className="modal__close-button-image modal__close-button-image--color"
           />
         </button>
-        <img src={card.imageUrl} alt={card.name} className="modal__image" />
-        <div className="modal__card-footer">
+        <img
+          src={card.imageUrl}
+          alt={card.name}
+          className="modal__image modal__image--horizontal"
+        />
+        <div className="modal__card-footer modal__card-footer--horizontal">
           <div className="modal__description">
             <h2 className="modal__caption modal__caption--horizontal">
               {card.name}

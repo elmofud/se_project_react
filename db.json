@@ -173,6 +173,24 @@
       "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
       "weather": "warm",
       "_id": 37
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "cold",
+      "_id": 39
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "",
+      "_id": 40
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
+      "weather": "",
+      "_id": 41
     }
   ]
 }

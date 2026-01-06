@@ -10,6 +10,7 @@ function ModalWithForm({
   name,
   isOpen,
   onSubmit,
+  isFormValid,
 }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -42,12 +43,16 @@ function ModalWithForm({
           <img
             src={closeButton}
             alt="black X image close"
-            className="modal__close-button-image modal__close-button-image--color"
+            className="modal__close-button-image"
           />
         </button>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
-          <button className="modal__submit" type="submit">
+          <button
+            className="modal__submit"
+            disabled={!isFormValid}
+            type="submit"
+          >
             {buttonText}
           </button>
         </form>

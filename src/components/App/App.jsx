@@ -28,7 +28,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-  const onAddItem = (inputNewItem) => {
+  const onAddItem = (inputNewItem, resetForm) => {
     const newCardData = {
       name: inputNewItem.name,
       imageUrl: inputNewItem.imageUrl,
@@ -38,6 +38,7 @@ function App() {
     addItem(newCardData)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
+        resetForm();
         handleCloseClick();
       })
       .catch((error) => {
