@@ -63,26 +63,37 @@ Script to guide the image within React.
 
 ### Application Navigation Flow
 
-**1. Opening the Add Todo Module**
+**1. Opening the WTWR home page**
 
 <img src="src/assets/readMeImage/wtwrMain.png" alt="home page" width="650">
 
 <br>
 <br>
 
-**2. Adding Todo Form**
+**2. Adding WTWR Form**
 
 <img src="src/assets/readMeImage/wtwrForm.png" alt="add garment Form" width="650">
 
 <br>
 <br>
 
-**3. Adding Date Module**
+**3. Mobile Preview Modal**
 
 <img src="src/assets/readMeImage/wtwrPreview.png" alt="clothes image preview" width="650">
 
 <br>
 <br>
+
+**4. Desktop Preview Modal**
+
+<img src="src/assets/readMeImage/desktopScrPreview.png" alt="clothes image preview" width="650">
+
+<br>
+<br>
+
+**5. Delete Confirmation Modal**
+
+<img src="src/assets/readMeImage/deleteConfirmation.png" alt="delete confirmation popup" width="650">
 
 # project 10: video
 

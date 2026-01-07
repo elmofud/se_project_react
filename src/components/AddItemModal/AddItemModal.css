@@ -62,35 +62,50 @@
   outline: none;
 }
 
-.modal__radio-buttons {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0 0 32px;
+.modal__legend {
+  font-size: 16px;
+  font-weight: 700;
   padding: 0;
+  margin-bottom: 12px;
 }
 
-.modal__radio-buttons {
-  width: auto;
-  color: #000000;
+.modal__label_type_radio {
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  padding: 8px;
+  color: #00000080;
+  transition: color 0.2s;
 }
 
-.modal__radio-buttons:checked {
+.modal__label_type_radio:hover {
+  color: #000000b3;
+}
+
+.modal__label_type_radio:has(.modal__radio-input:checked) {
   color: #000000;
+  font-weight: 700;
 }
 
 .modal__radio-input {
   margin-right: 8px;
   width: 16px;
   height: 16px;
-  color: #000000;
+  cursor: pointer;
+  accent-color: #00000080;
 }
 
-.modal__radio-input:checked {
-  color: #000000;
+.modal__label_type_radio:has(.modal__radio-input:checked) .modal__radio-input {
+  accent-color: #000000;
+}
+.modal__radio-buttons {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  gap: 8px;
+  width: 185px;
+  margin: 0 0 32px;
+  padding: 0;
 }
 
 .modal__submit {

@@ -64,47 +64,26 @@
   outline: none;
 }
 
-.modal__radio-buttons {
-  border: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0 0 32px;
-  padding: 0;
-}
-
-.modal__radio-buttons {
-  width: auto;
-  color: #000000;
-  cursor: pointer;
-  padding: 8px;
-}
-
-.modal__radio-buttons:checked {
-  color: #000000;
-}
-
-.modal__radio-input {
-  margin-right: 8px;
-  width: 16px;
-  height: 16px;
-  color: #000000;
-}
-
-.modal__radio-input:checked {
-  color: #000000;
-}
-
 .modal__submit {
   background-color: #000000;
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 16px;
+  font-weight: 700;
   line-height: 20px;
   border: 1px solid #000000;
   color: #ffffff;
+  transition: color 0, 3s ease;
 }
 
 .modal__submit:hover {
-  background: #00000099;
+  background-color: #00000099;
+}
+
+.mobal__submit:disabled {
+  background-color: #0000004d;
+}
+
+.modal__submit:disabled:hover {
+  background-color: #00000099;
 }
