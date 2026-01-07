@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import closeButton from "../../assets/BlackCloseButton.png";
+import closeButton from "../../assets/blackCloseButton.png";
 import "./DeleteConfirmationModal.css";
 
 function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {

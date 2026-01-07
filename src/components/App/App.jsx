@@ -8,7 +8,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
-import { filterWeatherData, getWeather } from "../../utils/weatherApi";
+import { filteredWeatherData, getWeather } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 
@@ -28,7 +28,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-  const onAddItem = (inputNewItem, resetForm) => {
+  const handleAddItem = (inputNewItem, resetForm) => {
     const newCardData = {
       name: inputNewItem.name,
       imageUrl: inputNewItem.imageUrl,
@@ -88,8 +88,8 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, apiKey)
       .then((data) => {
-        const filterDate = filterWeatherData(data);
-        setWeatherData(filterDate);
+        const filteredDate = filteredWeatherData(data);
+        setWeatherData(filteredDate);
         setIsWeatherDataLoad(true);
       })
       .catch(console.error);
@@ -140,7 +140,7 @@ function App() {
           <div>
             <AddItemModal
               buttonText="Add garment"
-              onAddItem={onAddItem}
+              onAddItem={handleAddItem}
               isOpen={activeModal === "add-garment"}
               onClose={handleCloseClick}
             />

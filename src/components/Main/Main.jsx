@@ -11,7 +11,7 @@ function Main({
   isWeatherDataLoad,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const DefaultWeatherTemp = {
+  const defaultWeatherTemp = {
     temp: { F: 45, C: 7 },
   };
   return (
@@ -19,14 +19,14 @@ function Main({
       <WeatherCard
         weatherData={weatherData}
         isWeatherDataLoad={isWeatherDataLoad}
-        DefaultWeatherTemp={DefaultWeatherTemp}
+        defaultWeatherTemp={defaultWeatherTemp}
       />
       <section className="cards">
         <p className="cards__text">
           Today is{" "}
           {isWeatherDataLoad
             ? weatherData.temp[currentTemperatureUnit]
-            : DefaultWeatherTemp.temp[currentTemperatureUnit]}
+            : defaultWeatherTemp.temp[currentTemperatureUnit]}
           ° {currentTemperatureUnit} / You want to wear:
         </p>
         <ul className="cards__list">

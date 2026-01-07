@@ -1,5 +1,5 @@
 import logo from "../../assets/logoWtwr.svg";
-import avatar from "../../assets/avatar.png";
+import avatar from "../../assets/Avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
