@@ -7,7 +7,7 @@ export const getWeather = ({ latitude, longitude }, apiKey) => {
   ).then(handleResponse);
 };
 
-export const filterWeatherData = (data) => {
+export const filteredWeatherData = (data) => {
   const result = {};
   result.city = data.name;
   result.temp = {
