@@ -39,7 +39,7 @@ function App() {
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         resetForm();
-        handleCloseClick();
+        closeActiveModal();
       })
       .catch((error) => {
         console.error("Error adding item:", error);
@@ -58,16 +58,12 @@ function App() {
       .catch((error) => console.error("Error deleting item:", error));
   };
 
-  const handleToggleSwitchChange = (evt) => {
+  const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
-  };
-
-  const handleCloseClick = () => {
-    setActiveModal("");
   };
 
   const handleCardClick = (card) => {
@@ -142,18 +138,18 @@ function App() {
               buttonText="Add garment"
               onAddItem={handleAddItem}
               isOpen={activeModal === "add-garment"}
-              onClose={handleCloseClick}
+              onClose={closeActiveModal}
             />
             <ItemModal
               isOpen={activeModal === "preview"}
-              onClose={handleCloseClick}
+              onClose={closeActiveModal}
               card={selectedCard}
               openConfirmationModal={openConfirmationModal}
             />
             <DeleteConfirmationModal
               isOpen={activeModal === "delete-confirmation"}
               onConfirm={handleCardDelete}
-              onClose={handleCloseClick}
+              onClose={closeActiveModal}
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  width: 325px;
+  aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
 }

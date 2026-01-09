@@ -80,7 +80,7 @@
   background-color: #00000099;
 }
 
-.mobal__submit:disabled {
+.modal__submit:disabled {
   background-color: #0000004d;
 }
 
