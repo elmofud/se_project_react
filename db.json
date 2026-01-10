@@ -100,18 +100,6 @@
       "name": "shirt",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
       "weather": "cold",
-      "_id": 17
-    },
-    {
-      "name": "shirt",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
-      "weather": "cold",
-      "_id": 18
-    },
-    {
-      "name": "shirt",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
-      "weather": "cold",
       "_id": 19
     },
     {
@@ -127,46 +115,10 @@
       "_id": 21
     },
     {
-      "name": "shirt",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
-      "weather": "cold",
-      "_id": 23
-    },
-    {
-      "name": "mesalamines ",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 28
-    },
-    {
-      "name": "tracey",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
-      "weather": "cold",
-      "_id": 30
-    },
-    {
-      "name": "T-shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 32
-    },
-    {
-      "name": "T-shirt",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
-      "weather": "cold",
-      "_id": 33
-    },
-    {
       "name": "T-shirt",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
       "weather": "",
       "_id": 34
-    },
-    {
-      "name": "T-shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 36
     },
     {
       "name": "T-shirt",
@@ -176,33 +128,15 @@
     },
     {
       "name": "T-shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 39
-    },
-    {
-      "name": "T-shirt",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
       "weather": "",
       "_id": 41
     },
     {
       "name": "T-shirt",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
       "weather": "cold",
       "_id": 42
-    },
-    {
-      "name": "T-shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 44
-    },
-    {
-      "name": "T-shirt",
-      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
-      "weather": "cold",
-      "_id": 46
     }
   ]
 }

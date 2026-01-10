@@ -3,6 +3,7 @@
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
+  max-width: 325px;
 }
 
 .card__name {
