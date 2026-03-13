@@ -11,7 +11,12 @@ const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
     password: "",
   };
   const { values, handleChange, handleReset } = useForm(defaultValues);
-  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({
+    name: "",
+    avatar: "",
+    email: "",
+    password: "",
+  });
 
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
