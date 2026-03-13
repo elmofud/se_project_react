@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import Header from "../Header/Header";
-import { coordinates, apiKey } from "../../utils/constants";
+import { apiKey } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Main from "../Main/Main";
@@ -11,23 +11,40 @@ import ItemModal from "../ItemModal/ItemModal";
 import { filteredWeatherData, getWeather } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
+import Registration from "../RegisterModal/Registration";
 
 import "./App.css";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({
-    type: "",
+  const fallbackWeather = {
+    type: "warm",
     condition: "",
-    temp: { F: 999, C: 999 },
-    city: "",
-    isDay: false,
-  });
+    temp: { F: 45, C: 7 },
+    city: "Your location",
+    isDay: true,
+  };
+  const [weatherData, setWeatherData] = useState(fallbackWeather);
   const [cardToDelete, setCardToDelete] = useState(null);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
+
+  const fetchWeather = (coords) => {
+    setIsWeatherDataLoad(false);
+    getWeather(coords, apiKey)
+      .then((data) => {
+        const filteredDate = filteredWeatherData(data);
+        setWeatherData(filteredDate);
+        setIsWeatherDataLoad(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching weather:", error);
+        setIsWeatherDataLoad(false);
+      });
+  };
+
   const handleAddItem = (inputNewItem, resetForm) => {
     const newCardData = {
       name: inputNewItem.name,
@@ -76,20 +93,36 @@ function App() {
     setActiveModal("delete-confirmation");
   };
 
+  const openRegisterModal = () => {
+    setActiveModal("register");
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
     setCardToDelete(null);
   };
 
   useEffect(() => {
-    getWeather(coordinates, apiKey)
-      .then((data) => {
-        const filteredDate = filteredWeatherData(data);
-        setWeatherData(filteredDate);
-        setIsWeatherDataLoad(true);
-      })
-      .catch(console.error);
+    if (!navigator.geolocation) {
+      console.error("Geolocation is not supported by this browser.");
+      return;
+    }
 
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        fetchWeather({
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        });
+      },
+      (error) => {
+        console.error("Unable to retrieve location:", error);
+        setIsWeatherDataLoad(false);
+      }
+    );
+  }, []);
+
+  useEffect(() => {
     getItems()
       .then((data) => {
         setClothingItems(data);
@@ -150,6 +183,12 @@ function App() {
               isOpen={activeModal === "delete-confirmation"}
               onConfirm={handleCardDelete}
               onClose={closeActiveModal}
+            />
+            <Registration
+              isOpen={activeModal === "register"}
+              onClose={closeActiveModal}
+              buttonText="Sign Up"
+              onRegister={openRegisterModal}
             />
           </div>
         </div>

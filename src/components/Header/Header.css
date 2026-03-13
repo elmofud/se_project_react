@@ -12,6 +12,24 @@ header {
   margin: 0;
 }
 
+.header__location-input {
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.header__location-input:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.header__location-input::placeholder {
+  color: #999999;
+}
+
 .header__btn-container {
   margin: 0 20px 0 auto;
   display: flex;

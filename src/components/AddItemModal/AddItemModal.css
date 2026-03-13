@@ -66,7 +66,7 @@
   font-size: 16px;
   font-weight: 700;
   padding: 0;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .modal__label_type_radio {
@@ -104,7 +104,7 @@
   white-space: nowrap;
   gap: 8px;
   width: 185px;
-  margin: 0 0 32px;
+  margin: 0 0 0;
   padding: 0;
 }
 
@@ -120,4 +120,35 @@
 
 .modal__submit:hover {
   background: #00000099;
+}
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.modal__input-container:has(.modal__error) .modal__input {
+  margin-bottom: 0;
+  border-bottom: 1px solid red;
+}
+
+.modal__input-container {
+  position: relative;
+}
+
+.modal__radio-container {
+  margin-bottom: 32px;
+}
+
+.modal__radio-container:has(.modal__error_weather) {
+  margin-bottom: 0;
+}
+
+.modal__error_weather {
+  margin-bottom: 32px;
+  width: 100%;
+  box-sizing: border-box;
 }

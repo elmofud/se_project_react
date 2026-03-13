@@ -137,6 +137,24 @@
       "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
       "weather": "cold",
       "_id": 42
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "warm",
+      "_id": 43
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "cold",
+      "_id": 44
+    },
+    {
+      "name": "T-shirt",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500",
+      "weather": "cold",
+      "_id": 45
     }
   ]
 }

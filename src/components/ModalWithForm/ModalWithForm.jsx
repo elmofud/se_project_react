@@ -50,7 +50,6 @@ function ModalWithForm({
           {children}
           <button
             className="modal__submit"
-            disabled={!isFormValid}
             type="submit"
           >
             {buttonText}
