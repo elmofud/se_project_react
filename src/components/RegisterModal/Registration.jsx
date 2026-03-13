@@ -5,6 +5,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
   const defaultValues = {
+    name: "",
+    avatar: "",
     email: "",
     password: "",
   };
