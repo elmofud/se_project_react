@@ -28,6 +28,7 @@ const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
   };
 
   const isFormValid =
+    values.name.trim() &&
     values.email.trim() &&
     values.password.trim() &&
     !errors.email &&
@@ -38,10 +39,15 @@ const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
     const emailError = validateEmail(values.email);
     const passwordError = validatePassword(values.password);
     if (emailError || passwordError) {
-      setErrors({ email: emailError, password: passwordError });
+      setErrors({
+        name: "",
+        avatar: "",
+        email: emailError,
+        password: passwordError,
+      });
       return;
     }
-    setErrors({ email: "", password: "" });
+    setErrors({ name: "", avatar: "", email: "", password: "" });
     onRegister(values, handleReset);
   };
 
@@ -55,6 +61,33 @@ const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
       buttonText={buttonText}
       isFormValid={isFormValid}
     >
+      <label htmlFor="name" className="modal__label">
+        Name{" "}
+        <input
+          required
+          type="text"
+          className="modal__input"
+          id="name"
+          placeholder="Name"
+          name="name"
+          value={values.name}
+          onChange={handleChange}
+        />
+      </label>
+
+      <label htmlFor="avatar" className="modal__label">
+        Avatar URL{" "}
+        <input
+          type="url"
+          className="modal__input"
+          id="avatar"
+          placeholder="Avatar URL"
+          name="avatar"
+          value={values.avatar}
+          onChange={handleChange}
+        />
+      </label>
+
       <label htmlFor="email" className="modal__label">
         Email{" "}
         <input
