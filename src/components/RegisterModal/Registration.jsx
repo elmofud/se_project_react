@@ -3,7 +3,13 @@ import { useForm } from "../../Hooks/useForm";
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
+const Registration = ({
+  isOpen,
+  onClose,
+  onRegister,
+  buttonText,
+  onLoginClick,
+}) => {
   const defaultValues = {
     name: "",
     avatar: "",
@@ -118,6 +124,13 @@ const Registration = ({ isOpen, onClose, onRegister, buttonText }) => {
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
+      <button
+        type="button"
+        className="modal__switch-btn"
+        onClick={onLoginClick}
+      >
+        or Log In
+      </button>
     </ModalWithForm>
   );
 };
