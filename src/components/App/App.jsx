@@ -12,6 +12,8 @@ import { filteredWeatherData, getWeather } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import Registration from "../RegisterModal/Registration";
+import  LoginModal  from "../LoginModal/LoginModal";
+import * as auth from "../../utils/auth";
 
 import "./App.css";
 
@@ -23,6 +25,7 @@ function App() {
     city: "Your location",
     isDay: true,
   };
+
   const [weatherData, setWeatherData] = useState(fallbackWeather);
   const [cardToDelete, setCardToDelete] = useState(null);
   const [activeModal, setActiveModal] = useState("");
@@ -30,6 +33,9 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
+  const [isLoading , setIsLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
 
   const fetchWeather = (coords) => {
     setIsWeatherDataLoad(false);
@@ -63,11 +69,26 @@ function App() {
       });
   };
 
+  const handleRegister = (value, resetForm) => {
+    auth
+    .signup(value)
+      .then(() => {
+        return auth.login({email: value.email, password: value.password}) ;
+      })
+      .then((data) => { 
+        setCurrentUser(data.user);
+        resetForm();
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Registration error:", error);
+      }); 
+
   const handleCardDelete = () => {
     deleteItem(cardToDelete._id)
       .then(() => {
         setClothingItems(
-          clothingItems.filter((item) => item._id !== cardToDelete._id)
+          clothingItems.filter((item) => item._id !== cardToDelete._id),
         );
         closeActiveModal();
         setCardToDelete(null);
@@ -88,6 +109,10 @@ function App() {
     setSelectedCard(card);
   };
 
+   
+
+
+
   const openConfirmationModal = (card) => {
     setCardToDelete(card);
     setActiveModal("delete-confirmation");
@@ -102,7 +127,7 @@ function App() {
     setCardToDelete(null);
   };
 
-  useEffect(() => {
+   useEffect(() => {
     if (!navigator.geolocation) {
       console.error("Geolocation is not supported by this browser.");
       return;
@@ -118,7 +143,7 @@ function App() {
       (error) => {
         console.error("Unable to retrieve location:", error);
         setIsWeatherDataLoad(false);
-      }
+      },
     );
   }, []);
 
