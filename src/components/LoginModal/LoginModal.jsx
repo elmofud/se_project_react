@@ -60,7 +60,7 @@ const LoginModal = ({
       onSubmit={handleLoginSubmit}
       isFormValid={isFormValid}
     >
-      <label className="login-modal__label">
+      <label htmlFor="email" className="modal__label">
         Email
         <input
           required
@@ -68,13 +68,11 @@ const LoginModal = ({
           name="email"
           value={values.email}
           onChange={handleChange}
-          className="login-modal__input"
+          className="modal__input"
         />
-        {errors.email && (
-          <span className="login-modal__error">{errors.email}</span>
-        )}
+        {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
-      <label className="login-modal__label">
+      <label htmlFor="password" className="modal__label">
         Password
         <input
           required
@@ -82,10 +80,10 @@ const LoginModal = ({
           name="password"
           value={values.password}
           onChange={handleChange}
-          className="login-modal__input"
+          className="modal__input"
         />
         {errors.password && (
-          <span className="login-modal__error">{errors.password}</span>
+          <span className="modal__error">{errors.password}</span>
         )}
       </label>
       <p className="login-modal__register-text">
