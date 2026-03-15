@@ -12,7 +12,7 @@ import { filteredWeatherData, getWeather } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import Profile from "../Profile/Profile";
 import Registration from "../RegisterModal/Registration";
-import  LoginModal  from "../LoginModal/LoginModal";
+import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
 
 import "./App.css";
@@ -33,9 +33,9 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-  const [isLoading , setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-
+  const [isloggedIn, setIsLoggedIn] = useState(false);
 
   const fetchWeather = (coords) => {
     setIsWeatherDataLoad(false);
@@ -69,20 +69,36 @@ function App() {
       });
   };
 
-  const handleRegister = (value, resetForm) => {
+  consthandleRegistration  = (value, resetForm) => {
     auth
-    .signup(value)
+      .signup(value)
       .then(() => {
-        return auth.login({email: value.email, password: value.password}) ;
+        return auth.login({ email: value.email, password: value.password });
       })
-      .then((data) => { 
-        setCurrentUser(data.user);
-        resetForm();
+      .then((data) => {
+        localStorage.setItem("jwt", data.token);
+        setIsLoggedIn(true);
         closeActiveModal();
+        resetForm();
       })
       .catch((error) => {
         console.error("Registration error:", error);
-      }); 
+      });
+  };
+
+  const handleLogin = (value, restForm) => {
+    if (!value.email || !value.password) {
+      return;
+    }
+    auth.login({email: value.email, password: value.password  })
+      .then((data) => {
+        if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        setIsLoggedIn(true);
+        closeActiveModal();
+        restForm();
+      }
+  };
 
   const handleCardDelete = () => {
     deleteItem(cardToDelete._id)
@@ -109,10 +125,6 @@ function App() {
     setSelectedCard(card);
   };
 
-   
-
-
-
   const openConfirmationModal = (card) => {
     setCardToDelete(card);
     setActiveModal("delete-confirmation");
@@ -127,7 +139,7 @@ function App() {
     setCardToDelete(null);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     if (!navigator.geolocation) {
       console.error("Geolocation is not supported by this browser.");
       return;

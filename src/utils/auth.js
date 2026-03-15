@@ -27,4 +27,12 @@ export const login = ({ email, password }) => {
   });
 };
 
-export 
+export const checkToken = (token) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
