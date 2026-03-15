@@ -16,7 +16,6 @@ import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
 
 import "./App.css";
-import { use } from "react";
 
 function App() {
   const fallbackWeather = {
@@ -36,7 +35,7 @@ function App() {
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const fetchWeather = (coords) => {
     setIsWeatherDataLoad(false);
@@ -70,7 +69,7 @@ function App() {
       });
   };
 
-  consthandleRegistration = (value, resetForm) => {
+  const handleRegistration = (value, resetForm) => {
     auth
       .signup(value)
       .then(() => {
@@ -106,23 +105,24 @@ function App() {
         resetForm();
       })
       .catch((error) => {
-        console.error("Login error:", error);
+        console.error("Token validation error:", error);
       });
   };
 
-   useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if(token) {
-      auth.checkToken(token)
-      .then((userData) => {
-        setCurrentUser(userData);
-        setIsLoggedIn(true);
-      })
-     .catch((error) => {
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((userData) => {
+          setCurrentUser(userData);
+          setIsLoggedIn(true);
+        })
+        .catch((error) => {
           console.error("Token validation error:", error);
-`       });
-     }
-`    }, []);
+        });
+    }
+  }, []);
 
   const handleCardDelete = () => {
     deleteItem(cardToDelete._id)
@@ -135,8 +135,6 @@ function App() {
       })
       .catch((error) => console.error("Error deleting item:", error));
   };
-
- 
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -162,7 +160,7 @@ function App() {
 
   const openLoginModal = () => {
     setActiveModal("login");
-  };  
+  };
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -255,7 +253,13 @@ function App() {
               isOpen={activeModal === "register"}
               onClose={closeActiveModal}
               buttonText="Sign Up"
-              onRegister={openRegisterModal}
+              onRegister={handleRegistration}
+            />
+            <LoginModal
+              buttonText="Log In"
+              isOpen={activeModal === "login"}
+              onClose={closeActiveModal}
+              onLogin={handleLogin}
             />
           </div>
         </div>
