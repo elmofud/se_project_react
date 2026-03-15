@@ -16,6 +16,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
 
 import "./App.css";
+import { use } from "react";
 
 function App() {
   const fallbackWeather = {
@@ -69,7 +70,7 @@ function App() {
       });
   };
 
-  consthandleRegistration  = (value, resetForm) => {
+  consthandleRegistration = (value, resetForm) => {
     auth
       .signup(value)
       .then(() => {
@@ -86,19 +87,42 @@ function App() {
       });
   };
 
-  const handleLogin = (value, restForm) => {
+  const handleLogin = (value, resetForm) => {
     if (!value.email || !value.password) {
       return;
     }
-    auth.login({email: value.email, password: value.password  })
+    auth
+      .login({ email: value.email, password: value.password })
       .then((data) => {
         if (data.token) {
-        localStorage.setItem("jwt", data.token);
+          localStorage.setItem("jwt", data.token);
+          return auth.checkToken(data.token);
+        }
+      })
+      .then((userData) => {
+        setCurrentUser(userData);
         setIsLoggedIn(true);
         closeActiveModal();
-        restForm();
-      }
+        resetForm();
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+      });
   };
+
+   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if(token) {
+      auth.checkToken(token)
+      .then((userData) => {
+        setCurrentUser(userData);
+        setIsLoggedIn(true);
+      })
+     .catch((error) => {
+          console.error("Token validation error:", error);
+`       }) 
+     }
+`    }, []);
 
   const handleCardDelete = () => {
     deleteItem(cardToDelete._id)
@@ -111,6 +135,8 @@ function App() {
       })
       .catch((error) => console.error("Error deleting item:", error));
   };
+
+ 
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
