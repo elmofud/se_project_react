@@ -17,7 +17,6 @@ import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
 
 import "./App.css";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const fallbackWeather = {
@@ -208,6 +207,9 @@ function App() {
               weatherData={weatherData}
               currentTemperatureUnit={currentTemperatureUnit}
               setCurrentTemperatureUnit={setCurrentTemperatureUnit}
+              isLoggedIn={isLoggedIn}
+              openRegisterModal={openRegisterModal}
+              openLoginModal={openLoginModal}
             />
             <Routes>
               <Route
