@@ -120,7 +120,7 @@ function App() {
       })
      .catch((error) => {
           console.error("Token validation error:", error);
-`       }) 
+`       });
      }
 `    }, []);
 
@@ -159,6 +159,10 @@ function App() {
   const openRegisterModal = () => {
     setActiveModal("register");
   };
+
+  const openLoginModal = () => {
+    setActiveModal("login");
+  };  
 
   const closeActiveModal = () => {
     setActiveModal("");
