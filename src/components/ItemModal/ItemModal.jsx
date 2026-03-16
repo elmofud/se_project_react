@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import "./ItemModal.css";
 import deleteItem from "../../assets/deleteItem.png";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import whiteCloseBtn from "../../assets/whiteCloseButton.png";
+
 function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = card.owner === currentUser._id;
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
       onClose();
@@ -54,19 +58,21 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
               Weather: {card.weather}
             </p>
           </div>
-          <div className="modal__delete-block modal__delete-block--disable">
-            <button
-              type="button"
-              onClick={() => openConfirmationModal(card)}
-              className="modal__delete-btn"
-            >
-              <img
-                src={deleteItem}
-                alt="delete image icon"
-                className="modal__delete-image-btn"
-              />
-            </button>
-          </div>
+          {isOwn && (
+            <div className="modal__delete-block modal__delete-block--disable">
+              <button
+                type="button"
+                onClick={() => openConfirmationModal(card)}
+                className="modal__delete-btn"
+              >
+                <img
+                  src={deleteItem}
+                  alt="delete image icon"
+                  className="modal__delete-image-btn"
+                />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
