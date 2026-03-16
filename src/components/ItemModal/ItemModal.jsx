@@ -6,7 +6,7 @@ import whiteCloseBtn from "../../assets/whiteCloseButton.png";
 
 function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = card.owner === currentUser._id;
+  const isOwn = card.owner === currentUser?._id;
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
       onClose();
