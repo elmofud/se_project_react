@@ -1,6 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/logoWtwr.svg";
-import avatar from "../../assets/Avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
@@ -14,6 +13,7 @@ function Header({
   openLoginModal,
 }) {
   const currentUser = useContext(CurrentUserContext);
+  const [avatarError, setAvatarError] = useState(false);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -42,11 +42,12 @@ function Header({
         <NavLink to="/profile" className="header__nav-Link">
           <div className="header__user-container">
             <p className="header__username">{currentUser?.name}</p>
-            {currentUser?.avatar ? (
+            {currentUser?.avatar && !avatarError ? (
               <img
                 className="header__avatar"
                 src={currentUser?.avatar}
                 alt={currentUser?.name}
+                onError={() => setAvatarError(true)}
               />
             ) : (
               <div className="header__avatar-placeholder">

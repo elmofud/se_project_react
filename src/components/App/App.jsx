@@ -78,6 +78,10 @@ function App() {
       })
       .then((data) => {
         localStorage.setItem("jwt", data.token);
+        return auth.checkToken(data.token);
+      })
+      .then((userData) => {
+        setCurrentUser(userData.data);
         setIsLoggedIn(true);
         closeActiveModal();
         resetForm();
@@ -100,7 +104,7 @@ function App() {
         }
       })
       .then((userData) => {
-        setCurrentUser(userData);
+        setCurrentUser(userData.data);
         setIsLoggedIn(true);
         closeActiveModal();
         resetForm();
@@ -116,7 +120,7 @@ function App() {
       auth
         .checkToken(token)
         .then((userData) => {
-          setCurrentUser(userData);
+          setCurrentUser(userData.data);
           setIsLoggedIn(true);
         })
         .catch((error) => {
@@ -191,7 +195,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        setClothingItems(data);
+        setClothingItems(data.data);
       })
       .catch(console.error);
   }, []);
