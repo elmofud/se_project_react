@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import Header from "../Header/Header";
 import { apiKey } from "../../utils/constants";
@@ -19,6 +19,7 @@ import * as auth from "../../utils/auth";
 import "./App.css";
 
 function App() {
+  const navigate = useNavigate();
   const fallbackWeather = {
     type: "warm",
     condition: "",
@@ -53,15 +54,16 @@ function App() {
   };
 
   const handleAddItem = (inputNewItem, resetForm) => {
+    const token = localStorage.getItem("jwt");
     const newCardData = {
       name: inputNewItem.name,
       imageUrl: inputNewItem.imageUrl,
       weather: inputNewItem.weather,
     };
 
-    addItem(newCardData)
+    addItem(newCardData, token)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems([data.data, ...clothingItems]);
         resetForm();
         closeActiveModal();
       })
@@ -114,6 +116,13 @@ function App() {
       });
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    navigate("/");
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
@@ -130,7 +139,8 @@ function App() {
   }, []);
 
   const handleCardDelete = () => {
-    deleteItem(cardToDelete._id)
+    const token = localStorage.getItem("jwt");
+    deleteItem(cardToDelete._id, token)
       .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item._id !== cardToDelete._id),
@@ -234,6 +244,7 @@ function App() {
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
                     handleAddClick={handleAddClick}
+                    onLogout={handleLogout}
                   />
                 }
               />

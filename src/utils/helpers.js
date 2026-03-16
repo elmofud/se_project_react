@@ -8,3 +8,8 @@ export function handleResponse(res) {
 export const request = (url, options) => {
   return fetch(url, options).then(handleResponse);
 };
+
+export const getAuthHeaders = (token) => ({
+  "Content-Type": "application/json",
+  authorization: `Bearer ${token}`,
+});
