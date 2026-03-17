@@ -34,7 +34,7 @@ export const checkToken = (token) => {
   });
 };
 
-export const onUpdateUser = ({ name, avatar }, token) => {
+export const updateUser = ({ name, avatar }, token) => {
   return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: getAuthHeaders(token),

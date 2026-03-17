@@ -15,6 +15,7 @@ import Profile from "../Profile/Profile";
 import Registration from "../RegisterModal/Registration";
 import LoginModal from "../LoginModal/LoginModal";
 import * as auth from "../../utils/auth";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 
 import "./App.css";
 
@@ -164,6 +165,19 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleEditProfileSubmit = (updatedData) => {
+    const token = localStorage.getItem("jwt");
+    auth
+      .updateUser(updatedData, token)
+      .then((data) => {
+        setCurrentUser(data.data);
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+      });
+  };
+
   const openConfirmationModal = (card) => {
     setCardToDelete(card);
     setActiveModal("delete-confirmation");
@@ -248,8 +262,8 @@ function App() {
                     clothingItems={clothingItems}
                     handleCardClick={handleCardClick}
                     handleAddClick={handleAddClick}
-                    onLogout={handleLogout}
                     onEditProfile={openEditProfileModal}
+                    onLogout={handleLogout}
                   />
                 }
               />
@@ -285,6 +299,12 @@ function App() {
                 isOpen={activeModal === "login"}
                 onClose={closeActiveModal}
                 onLogin={handleLogin}
+              />
+              <EditProfileModal
+                isOpen={activeModal === "edit-profile"}
+                onClose={closeActiveModal}
+                onUpdateUser={handleEditProfileSubmit}
+                buttonText="Save Changes"
               />
             </div>
           </div>

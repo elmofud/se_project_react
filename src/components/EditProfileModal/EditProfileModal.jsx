@@ -13,10 +13,11 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
       setName(currentUser.name || "");
       setAvatar(currentUser.avatar || "");
     }
-  }, [curenetUser, isOpen]);
+  }, [currentUser, isOpen]);
 
   const handleEditProfileSubmit = (evt) => {
     evt.preventDefault();
+    console.log("Submit clicked, values:", { name, avatar });
     onUpdateUser({ name, avatar });
   };
 
