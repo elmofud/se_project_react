@@ -1,4 +1,4 @@
-import { request } from "./helpers";
+import { request, getAuthHeaders } from "./helpers";
 
 const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
@@ -30,9 +30,14 @@ export const login = ({ email, password }) => {
 export const checkToken = (token) => {
   return request(`${baseUrl}/users/me`, {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
-    },
+    headers: getAuthHeaders(token),
+  });
+};
+
+export const onUpdateUser = ({ name, avatar }, token) => {
+  return request(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: getAuthHeaders(token),
+    body: JSON.stringify({ name, avatar }),
   });
 };

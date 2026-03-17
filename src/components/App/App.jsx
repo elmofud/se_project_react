@@ -173,6 +173,10 @@ function App() {
     setActiveModal("register");
   };
 
+  const openEditProfileModal = () => {
+    setActiveModal("edit-profile");
+  };
+
   const openLoginModal = () => {
     setActiveModal("login");
   };
@@ -245,6 +249,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     handleAddClick={handleAddClick}
                     onLogout={handleLogout}
+                    onEditProfile={openEditProfileModal}
                   />
                 }
               />

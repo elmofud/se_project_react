@@ -2,10 +2,16 @@ import React from "react";
 import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
-function Profile({ clothingItems, handleCardClick, handleAddClick, onLogout }) {
+function Profile({
+  clothingItems,
+  handleCardClick,
+  handleAddClick,
+  onLogout,
+  onEditProfile,
+}) {
   return (
     <section className="profile">
-      <SideBar onLogout={onLogout} />
+      <SideBar onLogout={onLogout} onEditProfile={onEditProfile} />
       <ClothesSection
         clothingItems={clothingItems}
         handleCardClick={handleCardClick}
