@@ -9,11 +9,13 @@ function Main({
   handleCardClick,
   clothingItems,
   isWeatherDataLoad,
+  onCardLike,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const defaultWeatherTemp = {
     temp: { F: 45, C: 7 },
   };
+
   return (
     <main className="main">
       <WeatherCard
@@ -40,6 +42,7 @@ function Main({
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
+                  onCardLike={onCardLike}
                 />
               );
             })}

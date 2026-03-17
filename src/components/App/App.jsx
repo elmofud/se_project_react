@@ -5,7 +5,7 @@ import {
   addItem,
   deleteItem,
   addCardLike,
-  removedCardLike,
+  removeCardLike,
 } from "../../utils/api";
 import Header from "../Header/Header";
 import { apiKey } from "../../utils/constants";
@@ -186,7 +186,7 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
-    const likeAction = isLiked ? removedCardLike : addCardLike;
+    const likeAction = isLiked ? removeCardLike : addCardLike;
     likeAction(id, token)
       .then((updatedCard) => {
         setClothingItems((prevItems) =>
@@ -272,6 +272,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     isWeatherDataLoad={isWeatherDataLoad}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -284,6 +285,7 @@ function App() {
                     handleAddClick={handleAddClick}
                     onEditProfile={openEditProfileModal}
                     onLogout={handleLogout}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
