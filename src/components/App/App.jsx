@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { getItems, addItem, deleteItem } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  deleteItem,
+  addCardLike,
+  removedCardLike,
+} from "../../utils/api";
 import Header from "../Header/Header";
 import { apiKey } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -176,6 +182,20 @@ function App() {
       .catch((error) => {
         console.error("Error updating profile:", error);
       });
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    const likeAction = isLiked ? removedCardLike : addCardLike;
+    likeAction(id, token)
+      .then((updatedCard) => {
+        setClothingItems((prevItems) =>
+          prevItems.map((item) =>
+            item._id === updatedCard.data._id ? updatedCard.data : item,
+          ),
+        );
+      })
+      .catch((error) => console.error("Error updating like status:", error));
   };
 
   const openConfirmationModal = (card) => {

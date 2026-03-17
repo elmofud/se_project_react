@@ -26,3 +26,17 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
     }),
   });
 };
+
+export const addCardLike = (selectedItemId, token) => {
+  return request(`${baseUrl}/items/${selectedItemId}/like`, {
+    method: "PUT",
+    headers: getAuthHeaders(token),
+  });
+};
+
+export const removedCardLike = (selectedItemId, token) => {
+  return request(`${baseUrl}/items/${selectedItemId}/like`, {
+    method: "DELETE",
+    header: getAuthHeaders(token),
+  });
+};
