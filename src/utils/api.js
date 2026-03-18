@@ -37,6 +37,6 @@ export const addCardLike = (selectedItemId, token) => {
 export const removeCardLike = (selectedItemId, token) => {
   return request(`${baseUrl}/items/${selectedItemId}/likes`, {
     method: "DELETE",
-    header: getAuthHeaders(token),
+    headers: getAuthHeaders(token),
   });
 };
