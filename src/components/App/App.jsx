@@ -7,6 +7,7 @@ import {
   addCardLike,
   removeCardLike,
 } from "../../utils/api";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Header from "../Header/Header";
 import { apiKey } from "../../utils/constants";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
@@ -42,7 +43,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState(`F`);
   const [isWeatherDataLoad, setIsWeatherDataLoad] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -141,7 +142,12 @@ function App() {
         })
         .catch((error) => {
           console.error("Token validation error:", error);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
+    } else {
+      setIsLoading(false);
     }
   }, []);
 
@@ -280,14 +286,16 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    clothingItems={clothingItems}
-                    handleCardClick={handleCardClick}
-                    handleAddClick={handleAddClick}
-                    onEditProfile={openEditProfileModal}
-                    onLogout={handleLogout}
-                    onCardLike={handleCardLike}
-                  />
+                  <ProtectedRoute isLoading={isLoading} isLoggedIn={isLoggedIn}>
+                    <Profile
+                      clothingItems={clothingItems}
+                      handleCardClick={handleCardClick}
+                      handleAddClick={handleAddClick}
+                      onEditProfile={openEditProfileModal}
+                      onLogout={handleLogout}
+                      onCardLike={handleCardLike}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>
@@ -316,12 +324,14 @@ function App() {
                 onClose={closeActiveModal}
                 buttonText="Sign Up"
                 onRegister={handleRegistration}
+                onLoginClick={openLoginModal}
               />
               <LoginModal
                 buttonText="Log In"
                 isOpen={activeModal === "login"}
                 onClose={closeActiveModal}
                 onLogin={handleLogin}
+                onClick={openRegisterModal}
               />
               <EditProfileModal
                 isOpen={activeModal === "edit-profile"}
