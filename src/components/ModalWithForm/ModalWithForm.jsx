@@ -11,6 +11,7 @@ function ModalWithForm({
   isOpen,
   onSubmit,
   isFormValid,
+  alternateButton,
 }) {
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
@@ -48,12 +49,16 @@ function ModalWithForm({
         </button>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
-          <button
-            className="modal__submit"
-            type="submit"
-          >
-            {buttonText}
-          </button>
+          <div className="modal__button-group">
+            <button
+              className="modal__submit"
+              type="submit"
+              disabled={!isFormValid}
+            >
+              {buttonText}
+            </button>
+            {alternateButton}
+          </div>
         </form>
       </div>
     </div>

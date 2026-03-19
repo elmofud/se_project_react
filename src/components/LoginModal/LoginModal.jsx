@@ -86,16 +86,15 @@ const LoginModal = ({
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
-      <p className="login-modal__register-text">
-        Don't have an account?{" "}
+      <div className="login-modal__actions">
         <button
           type="button"
           className="login-modal__register-button"
           onClick={onRegisterClick}
         >
-          Register
+          or Sign Up
         </button>
-      </p>
+      </div>
     </ModalWithForm>
   );
 };
