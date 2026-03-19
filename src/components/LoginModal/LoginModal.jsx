@@ -59,6 +59,15 @@ const LoginModal = ({
       onClose={onClose}
       onSubmit={handleLoginSubmit}
       isFormValid={isFormValid}
+      alternateButton={
+        <button
+          type="button"
+          className="modal__alternate-btn"
+          onClick={onRegisterClick}
+        >
+          or Sign Up
+        </button>
+      }
     >
       <label htmlFor="email" className="modal__label">
         Email
@@ -86,15 +95,6 @@ const LoginModal = ({
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
-      <div className="login-modal__actions">
-        <button
-          type="button"
-          className="login-modal__register-button"
-          onClick={onRegisterClick}
-        >
-          or Sign Up
-        </button>
-      </div>
     </ModalWithForm>
   );
 };
