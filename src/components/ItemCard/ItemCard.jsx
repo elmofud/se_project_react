@@ -6,6 +6,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   const isLiked = item.likes?.some((id) => id === currentUser?._id);
   console.log("item.likes:", item.likes);
   console.log("isLiked:", isLiked);
+
   const itemLikeButtonClassName = `card__like-btn ${isLiked ? "card__like-btn_active" : ""}`;
 
   const handleLike = () => {
@@ -14,16 +15,17 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
-      {currentUser && (
-        <button
-          className={itemLikeButtonClassName}
-          onClick={handleLike}
-          type="button"
-        >
-          {isLiked ? "Unlike" : "Like"}
-        </button>
-      )}
+      <div className="card__title-container">
+        <h2 className="card__name">{item.name}</h2>
+        {currentUser && (
+          <button
+            className={itemLikeButtonClassName}
+            onClick={handleLike}
+            type="button"
+            aria-label={isLiked ? "Unlike" : "Like"}
+          ></button>
+        )}
+      </div>
 
       <img
         onClick={() => {
