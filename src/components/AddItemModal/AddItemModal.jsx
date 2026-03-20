@@ -98,12 +98,12 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
             cold
           </label>
         </fieldset>
-        {errors.weather && (
-          <span className="modal__error modal__error_weather">
-            Please select a weather type.
-          </span>
-        )}
-      </div>
+      </div>{" "}
+      {errors.weather && (
+        <span className="modal__error modal__error_weather">
+          Please select a weather type.
+        </span>
+      )}
     </ModalWithForm>
   );
 };

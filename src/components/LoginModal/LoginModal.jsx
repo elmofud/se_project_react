@@ -26,7 +26,12 @@ const LoginModal = ({
   };
 
   const validatePassword = (password) => {
-    return password.length >= 8 ? "" : "Password must be at least 8 characters";
+    if (password.length < 8) {
+      return "Password must be at least 8 characters";
+    } else if (password.length > 50) {
+      return "Password cannot exceed 50 characters";
+    }
+    return "";
   };
 
   const isFormValid =
@@ -76,8 +81,11 @@ const LoginModal = ({
           type="email"
           name="email"
           value={values.email}
-          onChange={handleChange}
           className="modal__input"
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({ ...errors, email: validateEmail(evt.target.value) });
+          }}
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
@@ -88,8 +96,14 @@ const LoginModal = ({
           type="password"
           name="password"
           value={values.password}
-          onChange={handleChange}
           className="modal__input"
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({
+              ...errors,
+              password: validatePassword(evt.target.value),
+            });
+          }}
         />
         {errors.password && (
           <span className="modal__error">{errors.password}</span>

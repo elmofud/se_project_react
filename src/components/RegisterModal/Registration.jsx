@@ -30,7 +30,32 @@ const Registration = ({
   };
 
   const validatePassword = (password) => {
-    return password.length >= 8 ? "" : "Password must be at least 8 characters";
+    if (password.length < 8) {
+      return "Password must be at least 8 characters";
+    } else if (password.length > 50) {
+      return "Password cannot exceed 50 characters";
+    }
+    return "";
+  };
+
+  const validateName = (name) => {
+    if (!name.trim()) {
+      return "Name cannot be empty.";
+    } else if (name.trim().length < 2) {
+      return "Name must be at least 2 characters.";
+    } else if (name.trim().length > 40) {
+      return "Name cannot exceed 40 characters.";
+    }
+    return "";
+  };
+
+  const validateAvatar = (url) => {
+    if (!url.trim()) {
+      return "";
+    } else if (!/^https?:\/\/\S+$/.test(url.trim())) {
+      return "Please enter a valid URL.";
+    }
+    return "";
   };
 
   const isFormValid =
@@ -38,16 +63,20 @@ const Registration = ({
     values.email.trim() &&
     values.password.trim() &&
     !errors.email &&
-    !errors.password;
+    !errors.password &&
+    !errors.name &&
+    !errors.avatar;
 
   const handleRegisterSubmit = (evt) => {
     evt.preventDefault();
     const emailError = validateEmail(values.email);
     const passwordError = validatePassword(values.password);
-    if (emailError || passwordError) {
+    const nameError = validateName(values.name);
+    const avatarError = validateAvatar(values.avatar);
+    if (emailError || passwordError || nameError || avatarError) {
       setErrors({
-        name: "",
-        avatar: "",
+        name: nameError,
+        avatar: avatarError,
         email: emailError,
         password: passwordError,
       });
@@ -86,8 +115,12 @@ const Registration = ({
           placeholder="Name"
           name="name"
           value={values.name}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({ ...errors, name: validateName(evt.target.value) });
+          }}
         />
+        {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
 
       <label htmlFor="avatar" className="modal__label">
@@ -99,8 +132,12 @@ const Registration = ({
           placeholder="Avatar URL"
           name="avatar"
           value={values.avatar}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({ ...errors, avatar: validateAvatar(evt.target.value) });
+          }}
         />
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
 
       <label htmlFor="email" className="modal__label">
@@ -113,7 +150,10 @@ const Registration = ({
           placeholder="Email"
           name="email"
           value={values.email}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({ ...errors, email: validateEmail(evt.target.value) });
+          }}
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
@@ -127,7 +167,13 @@ const Registration = ({
           placeholder="Password"
           name="password"
           value={values.password}
-          onChange={handleChange}
+          onChange={(evt) => {
+            handleChange(evt);
+            setErrors({
+              ...errors,
+              password: validatePassword(evt.target.value),
+            });
+          }}
         />
         {errors.password && (
           <span className="modal__error">{errors.password}</span>
