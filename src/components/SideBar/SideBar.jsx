@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./SideBar.css";
 
 function SideBar({ onLogout, onEditProfile }) {
   const currentUser = React.useContext(CurrentUserContext);
+  console.log("Current user in SideBar:", currentUser);
+  console.log("Current user avatar in SideBar:", currentUser?.avatar);
   const [avatarError, setAvatarError] = React.useState(false);
+
+  useEffect(() => {
+    setAvatarError(false);
+  }, [currentUser?.avatar]);
+
   return (
     <aside className="sidebar">
       <div className="sideBar__profile">
@@ -22,12 +29,14 @@ function SideBar({ onLogout, onEditProfile }) {
         )}
         <p className="sideBar__username">{currentUser?.name}</p>
       </div>
-      <button className="sideBar__edit-btn" onClick={onEditProfile}>
-        Change profile data
-      </button>
-      <button className="sidebar__Logout-btn" onClick={onLogout}>
-        Sign Out
-      </button>
+      <div className="sideBar__buttons">
+        <button className="sideBar__edit-btn" onClick={onEditProfile}>
+          Change profile data
+        </button>
+        <button className="sideBar__logout-btn" onClick={onLogout}>
+          Sign Out
+        </button>
+      </div>
     </aside>
   );
 }

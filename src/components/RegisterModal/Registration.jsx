@@ -66,6 +66,15 @@ const Registration = ({
       onSubmit={handleRegisterSubmit}
       buttonText={buttonText}
       isFormValid={isFormValid}
+      alternateButton={
+        <button
+          type="button"
+          className="modal__alternate-btn"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      }
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
@@ -124,13 +133,6 @@ const Registration = ({
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
-      <button
-        type="button"
-        className="modal__switch-btn"
-        onClick={onLoginClick}
-      >
-        or Log In
-      </button>
     </ModalWithForm>
   );
 };

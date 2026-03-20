@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import logo from "../../assets/logoWtwr.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import "./Header.css";
@@ -18,6 +18,10 @@ function Header({
     month: "long",
     day: "numeric",
   });
+
+  useEffect(() => {
+    setAvatarError(false);
+  }, [currentUser?.avatar]);
 
   return (
     <header className="header">

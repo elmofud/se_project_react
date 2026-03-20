@@ -7,6 +7,39 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
   const currentUser = useContext(CurrentUserContext);
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [errors, setErrors] = useState({ name: "", avatar: "" });
+  const validateUrl = (url) => {
+    const urlPattern = new RegExp(
+      "^(https?:\\/\\/)?(www\\.)?([\\w-]+\\.)+[\\w-]{2,}(\\/\\S*)?$",
+      "i",
+    );
+    return urlPattern.test(url);
+  };
+
+  const validateName = (name) => {
+    if (!name.trim()) {
+      return "Name cannot be empty.";
+    } else if (name.trim().length < 2) {
+      return "Name must be at least 2 characters.";
+    } else if (name.trim().length > 40) {
+      return "Name cannot exceed 40 characters.";
+    } else {
+      return "";
+    }
+  };
+
+  const validateAvatar = (url) => {
+    if (!url.trim()) {
+      return "Avatar URL cannot be empty.";
+    } else if (!validateUrl(url.trim())) {
+      return "Please enter a valid URL.";
+    } else {
+      return "";
+    }
+  };
+
+  const isFormValid =
+    name.trim() && avatar.trim() && !errors.name && !errors.avatar;
 
   useEffect(() => {
     if (currentUser) {
@@ -29,6 +62,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleEditProfileSubmit}
+      isFormValid={isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name
@@ -40,8 +74,13 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
           placeholder="Name"
           className="modal__input"
           value={name}
-          onChange={(evt) => setName(evt.target.value)}
+          onChange={(evt) => {
+            const value = evt.target.value;
+            setName(value);
+            setErrors({ ...errors, name: validateName(value) });
+          }}
         />
+        {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
       <label htmlFor="avatar" className="modal__label">
         Avatar URL
@@ -53,8 +92,13 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
           placeholder="Avatar URL"
           name="avatar"
           value={avatar}
-          onChange={(evt) => setAvatar(evt.target.value)}
+          onChange={(evt) => {
+            const value = evt.target.value;
+            setAvatar(value);
+            setErrors({ ...errors, avatar: validateAvatar(value) });
+          }}
         />
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
     </ModalWithForm>
   );
