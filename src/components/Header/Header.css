@@ -81,6 +81,17 @@ header {
   object-fit: cover;
 }
 
+.header__avatar-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000033;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #00000080;
+  border-radius: 50%;
+}
+
 .header__auth-buttons {
   display: flex;
   gap: 20px;

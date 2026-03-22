@@ -1,5 +1,10 @@
 @import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
 @import url(./components/ModalWithForm/ModalWithForm.css);
 @import url(./components/ItemModal/ItemModal.css);
 @import url(./components/DeleteConfirmationModal/DeleteConfirmationModal.css);
 @import url(./components/ClothesSection/ClothesSection.css);
+
+* {
+  box-sizing: border-box;
+}
