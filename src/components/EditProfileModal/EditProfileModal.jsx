@@ -50,7 +50,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
 
   const handleEditProfileSubmit = (evt) => {
     evt.preventDefault();
-    console.log("Submit clicked, values:", { name, avatar });
+
     onUpdateUser({ name, avatar });
   };
 

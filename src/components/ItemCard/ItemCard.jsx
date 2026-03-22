@@ -4,8 +4,6 @@ import "./ItemCard.css";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   const isLiked = item.likes?.some((id) => id === currentUser?._id);
-  console.log("item.likes:", item.likes);
-  console.log("isLiked:", isLiked);
 
   const itemLikeButtonClassName = `card__like-btn ${isLiked ? "card__like-btn_active" : ""}`;
 

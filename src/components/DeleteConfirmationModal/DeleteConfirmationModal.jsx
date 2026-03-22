@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import closeButton from "../../assets/blackCloseButton.png";
 import "./DeleteConfirmationModal.css";
 
@@ -28,7 +28,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
       className={`modal ${isOpen && "modal_opened"}`}
     >
       <div className="modal__content modal__content_padding">
-        <button type="button" className="modal__close-btn " onClick={onClose}>
+        <button type="button" className="modal__close-btn" onClick={onClose}>
           <img
             src={closeButton}
             alt="black close button"

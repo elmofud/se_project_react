@@ -32,37 +32,37 @@ function ItemModal({ isOpen, onClose, card, openConfirmationModal }) {
       onClick={handleOverlayClick}
       className={`modal ${isOpen && "modal_opened"}`}
     >
-      <div className="modal__content modal__content--preview">
+      <div className="modal__content modal__content_preview">
         <button
           onClick={onClose}
           type="button"
-          className="modal__close-btn modal__close-btn--position"
+          className="modal__close-btn modal__close-btn_position"
         >
           <img
             src={whiteCloseBtn}
             alt="white X image close button"
-            className="modal__close-button-image modal__close-button-image--color"
+            className="modal__close-button-image modal__close-button-image_color"
           />
         </button>
         <div className="modal__image-container">
           <img
             src={card.imageUrl}
             alt={card.name}
-            className="modal__image modal__image--horizontal"
+            className="modal__image modal__image_horizontal"
           />
-          <h2 className="modal__caption--horizontal">{card.name}</h2>
+          <h2 className="modal__caption_horizontal">{card.name}</h2>
         </div>
-        <div className="modal__card-footer modal__card-footer--horizontal">
+        <div className="modal__card-footer modal__card-footer_horizontal">
           <div className="modal__description">
-            <h2 className="modal__caption modal__caption--vertical">
+            <h2 className="modal__caption modal__caption_vertical">
               {card.name}
             </h2>
-            <p className="modal__weather modal__weather--positionL">
+            <p className="modal__weather modal__weather_positionL">
               Weather: {card.weather}
             </p>
           </div>
           {isOwn && (
-            <div className="modal__delete-block modal__delete-block--disable">
+            <div className="modal__delete-block modal__delete-block_disable">
               <button
                 type="button"
                 onClick={() => openConfirmationModal(card)}

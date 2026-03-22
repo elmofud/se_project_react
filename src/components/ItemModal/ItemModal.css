@@ -5,7 +5,7 @@
   padding-bottom: 50px;
   overflow-y: auto;
 }
-.modal__close-btn--position {
+.modal__close-btn_position {
   top: 26px;
   right: 26px;
   background-color: transparent;
@@ -16,7 +16,7 @@
   height: 20px;
 }
 
-.modal__content--preview {
+.modal__content_preview {
   width: 498px;
   height: 610px;
   border: 1px solid #0000004d;
@@ -77,16 +77,16 @@
   border: none;
 }
 
-.modal__caption--vertical {
+.modal__caption_vertical {
   display: block;
 }
 
-.modal__caption--horizontal {
+.modal__caption_horizontal {
   display: none;
 }
 
 @media screen and (min-width: 900px) {
-  .modal__content.modal__content--preview {
+  .modal__content.modal__content_preview {
     display: flex;
     flex-direction: row;
     gap: 28px;
@@ -104,7 +104,7 @@
     width: 325px;
   }
 
-  .modal__image--horizontal {
+  .modal__image_horizontal {
     display: block;
     border: 2px solid #0000004d;
     width: 325px;
@@ -115,7 +115,7 @@
     border-radius: 16px;
   }
 
-  .modal__caption--horizontal {
+  .modal__caption_horizontal {
     display: block;
     position: absolute;
     top: 17px;
@@ -129,11 +129,11 @@
     margin: 0;
   }
 
-  .modal__caption--vertical {
+  .modal__caption_vertical {
     display: none;
   }
 
-  .modal__card-footer.modal__card-footer--horizontal {
+  .modal__card-footer.modal__card-footer_horizontal {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -143,17 +143,17 @@
     flex: 1;
   }
 
-  .modal__weather--positionL {
+  .modal__weather_positionL {
     margin-top: 12px;
   }
 
-  .modal__close-btn--position {
+  .modal__close-btn_position {
     top: 20px;
     right: 20px;
     border: none;
   }
 
-  .modal__close-button-image--color {
+  .modal__close-button-image_color {
     filter: brightness(0) opacity(0.3);
     border: none;
   }

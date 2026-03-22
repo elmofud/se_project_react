@@ -191,7 +191,6 @@ function App() {
   };
 
   const handleCardLike = ({ id, isLiked }) => {
-    console.log("handleCardLike called with:", { id, isLiked });
     const token = localStorage.getItem("jwt");
     const likeAction = isLiked ? removeCardLike : addCardLike;
     likeAction(id, token)
