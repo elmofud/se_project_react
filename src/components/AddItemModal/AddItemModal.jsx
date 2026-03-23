@@ -35,7 +35,7 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
           {errors.name && <span className="modal__error">{errors.name}</span>}
         </div>
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="add-garment-imageUrl" className="modal__label">
         Image{" "}
         <div className="modal__input-container">
           <input
