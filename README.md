@@ -1,117 +1,157 @@
-# Project 10: react
+# WTWR (What to Wear)
 
-WTWR provides clothing recommendations based on current temperature, while the weather card dynamically updates its appearance to reflect real-time weather conditions like [list the conditions you've implemented] and time of day.
+A React-based weather application that recommends clothing items based on current weather conditions. Users can register, log in, add clothing items, like items, and manage their wardrobe.
 
-### Project 10: description:
+## Backend Repository
 
-"The app recommends clothing based on current temperature ranges, categorizing weather into hot, warm, and cold conditions to filter appropriate clothing items."
+[WTWR Backend API](https://github.com/elmofud/se_project_express)
 
-**technologies and techniques used**
+## Live Demo
 
-figma:
-Cloud-based design and prototyping tool primarily used for creating user interfaces and user experience for digital products.
+[WTWR on GitHub Pages](https://elmofud.github.io/se_project_react/)
 
-.css:
-Style sheets is a style sheet language used in web development.
+## Features
 
-flex box:
-help to deploy the elements placement in relationship to the parent and child elements.
+- **Weather-based recommendations**: Displays clothing items filtered by current weather conditions (hot, warm, cold)
+- **User authentication**: Register and log in with secure JWT tokens
+- **Profile management**: Update user name and avatar
+- **Clothing management**: Add, delete, and like clothing items
+- **Responsive design**: Vertical and horizontal layouts for item preview modals
+- **Temperature toggle**: Switch between Fahrenheit and Celsius
+- **Protected routes**: Profile page accessible only to logged-in users
+- **Form validation**: Real-time validation on registration and login forms
 
-transition:
-The button required change condition from solid to opaque when hovering. The use of this allows a smoother change to occur.
+## Technologies Used
 
-**JavaScript:**
+- **React 18** - UI library with functional components and hooks
+- **React Router** - Client-side routing with protected routes
+- **Context API** - State management for user and temperature data
+- **Vite** - Build tool and development server
+- **CSS3** - Styling with BEM methodology
+- **REST API** - Communication with Express backend
+- **JWT** - Token-based authentication
+- **OpenWeather API** - Real-time weather data
 
-index.js:
-script controling button navigation and modal interface.
+## Project Structure
 
-Escape Key closure:
-script to close modal by pressing the "Escape Key" as if using the close button.
+```
+src/
+├── assets/          # Images and icons
+├── components/      # React components
+│   ├── AddItemModal/
+│   ├── App/
+│   ├── ClothesSection/
+│   ├── DeleteConfirmationModal/
+│   ├── EditProfileModal/
+│   ├── Footer/
+│   ├── Header/
+│   ├── ItemCard/
+│   ├── ItemModal/
+│   ├── LoginModal/
+│   ├── Main/
+│   ├── ModalWithForm/
+│   ├── Profile/
+│   ├── ProtectedRoute/
+│   ├── RegisterModal/
+│   ├── SideBar/
+│   ├── ToggleSwitch/
+│   └── WeatherCard/
+├── contexts/        # React Context providers
+├── Hooks/           # Custom hooks (useForm)
+├── utils/           # API and helper functions
+│   ├── api.js       # Item CRUD operations
+│   ├── auth.js      # Authentication functions
+│   ├── constants.js # API keys and coordinates
+│   ├── helpers.js   # Utility functions
+│   └── weatherApi.js # Weather API integration
+└── vendor/          # Third-party CSS (normalize, fonts)
+```
 
-outside modal closure:
-script to closing modal only by clicking outside the modal and not the main modal.
+## API Endpoints
 
-submit button lock:
-script to lock submit button intil input field meet the criteria to become active.
+### Authentication
 
-**React**
+- `POST /signup` - Register new user
+- `POST /signin` - Log in user
 
-React:
-eact is a popular JavaScript library for building user interfaces, particularly for single-page applications. It allows developers to create reusable UI components, making the development process more efficient and maintainable.
+### Users
 
-useState:
-The useState hook is a fundamental feature in React that allows you to add state variables to functional components that it provides a way to manage state within functional components without the need for class-based components.
+- `GET /users/me` - Get current user
+- `PATCH /users/me` - Update user profile
 
-useEfect
-The useEffect hook in React is a powerful tool that allows you to perform side effects in your functional components. Side effects are operations that affect something outside the scope of the function being executed, such as fetching data, updating the DOM, or setting up timers.
+### Items
 
-Api:
-In ReactJS, integrating APIs is essential for building dynamic, data-driven applications. APIs allow your frontend to communicate with backend services, fetch data, and perform CRUD operations. You can use Fetch API (built-in) or Axios (third-party) to handle HTTP requests.
+- `GET /items` - Get all clothing items
+- `POST /items` - Add new item (auth required)
+- `DELETE /items/:id` - Delete item (auth required)
+- `PUT /items/:id/likes` - Like item (auth required)
+- `DELETE /items/:id/likes` - Unlike item (auth required)
 
-children:
-Chilren are a special prop automatically passed to every component, representing the content between the opening and closing tags of a component.
+## Screenshots
 
-**WebPack**
+### Home Page
 
-Import images and fonts from Vanilla HTML to have them imported with Webpack.
+<img src="src/assets/readMeImage/wtwrMain.png" alt="WTWR Home Page" width="650">
 
-PostCSS.config.js:
-Transpile CSS code to enable the use of the most modern features of their language on older browsers.
+### Add Garment Form
 
-Image scr through JavaScript:
-Script to guide the image within React.
+<img src="src/assets/readMeImage/wtwrForm.png" alt="Add Garment Form" width="650">
 
-### Application Navigation Flow
+### Mobile Preview Modal
 
-**1. Opening the WTWR home page**
+<img src="src/assets/readMeImage/wtwrPreview.png" alt="Mobile Preview" width="650">
 
-<img src="src/assets/readMeImage/wtwrMain.png" alt="home page" width="650">
+### Desktop Preview Modal
 
-<br>
-<br>
+<img src="src/assets/readMeImage/desktopScrPreview.png" alt="Desktop Preview" width="650">
 
-**2. Adding WTWR Form**
+### Profile Page
 
-<img src="src/assets/readMeImage/wtwrForm.png" alt="add garment Form" width="650">
+<img src="src/assets/readMeImage/profilePage.png" alt="Profile Page" width="650">
 
-<br>
-<br>
+### Delete Confirmation
 
-**3. Mobile Preview Modal**
+<img src="src/assets/readMeImage/deleteConfirmation.png" alt="Delete Confirmation" width="650">
 
-<img src="src/assets/readMeImage/wtwrPreview.png" alt="clothes image preview" width="650">
+## Installation
 
-<br>
-<br>
+1. Clone the repository:
 
-**4. Desktop Preview Modal**
+```bash
+git clone https://github.com/elmofud/se_project_react.git
+cd se_project_react
+```
 
-<img src="src/assets/readMeImage/desktopScrPreview.png" alt="clothes image preview" width="650">
+2. Install dependencies:
 
-<br>
-<br>
+```bash
+npm install
+```
 
-**5. Delete Confirmation Modal**
+3. Start the development server:
 
-<img src="src/assets/readMeImage/deleteConfirmation.png" alt="delete confirmation popup" width="650">
+```bash
+npm run dev
+```
 
-# project 10: video
+4. Make sure the backend server is running on `http://localhost:3001`
 
-https://1drv.ms/v/c/016b05295161b701/IQDizj-KlHEpQLDyOMQXbpsiAVlFVA5fJ-mGnGx2lmbwf4s?e=0QemDK
+## Scripts
 
-# Project 11: video
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
 
-https://1drv.ms/v/c/016b05295161b701/IQCUtMgPl4ynRLvnJY56GBRhAdYAoBF_spa0csYpNdTbFMk?e=gOiwV3
+## Video Demos
 
-**the link to project on GitHub Pages**
+- [Project 14 Demo](https://www.youtube.com/watch?v=-or2ZmuAKjA)
+- [Project 11 Demo](https://1drv.ms/v/c/016b05295161b701/IQCUtMgPl4ynRLvnJY56GBRhAdYAoBF_spa0csYpNdTbFMk?e=gOiwV3)
+- [Project 10 Demo](https://1drv.ms/v/c/016b05295161b701/IQDizj-KlHEpQLDyOMQXbpsiAVlFVA5fJ-mGnGx2lmbwf4s?e=0QemDK)
 
-Your site is live at https://elmofud.github.io/se_project_react/
+## Author
 
-# React + Vite
+Developed by Tracey Garber
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+_Built with React + Vite_
