@@ -74,10 +74,11 @@ const LoginModal = ({
         </button>
       }
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         Email
         <input
           required
+          id="login-email"
           type="email"
           name="email"
           value={values.email}
@@ -89,10 +90,11 @@ const LoginModal = ({
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         Password
         <input
           required
+          id="login-password"
           type="password"
           name="password"
           value={values.password}

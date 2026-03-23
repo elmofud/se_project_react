@@ -74,7 +74,7 @@
   outline: none;
 }
 
-modal__input::placeholder {
+.modal__input::placeholder {
   color: #000066;
 }
 
