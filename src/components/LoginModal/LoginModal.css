@@ -15,6 +15,6 @@
   cursor: pointer;
 }
 
-.login-modal__registrer-button:hover {
+.login-modal__register-button:hover {
   opacity: 0.7;
 }

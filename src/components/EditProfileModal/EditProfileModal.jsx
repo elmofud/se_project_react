@@ -64,12 +64,12 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
       onSubmit={handleEditProfileSubmit}
       isFormValid={isFormValid}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="edit-profile-name" className="modal__label">
         Name
         <input
           required
           type="text"
-          id="name"
+          id="edit-profile-name"
           name="name"
           placeholder="Name"
           className="modal__input"
@@ -82,13 +82,13 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser, buttonText }) {
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="edit-profile-avatar" className="modal__label">
         Avatar URL
         <input
           required
           type="url"
           className="modal__input"
-          id="avatar"
+          id="edit-profile-avatar"
           placeholder="Avatar URL"
           name="avatar"
           value={avatar}

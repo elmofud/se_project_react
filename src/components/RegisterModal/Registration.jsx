@@ -105,13 +105,13 @@ const Registration = ({
         </button>
       }
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
           required
           type="text"
           className="modal__input"
-          id="name"
+          id="register-name"
           placeholder="Name"
           name="name"
           value={values.name}
@@ -123,12 +123,12 @@ const Registration = ({
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
 
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="register-avatar" className="modal__label">
         Avatar URL{" "}
         <input
           type="url"
           className="modal__input"
-          id="avatar"
+          id="register-avatar"
           placeholder="Avatar URL"
           name="avatar"
           value={values.avatar}
@@ -140,13 +140,13 @@ const Registration = ({
         {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
 
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
           required
           type="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="Email"
           name="email"
           value={values.email}
@@ -157,13 +157,13 @@ const Registration = ({
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password{" "}
         <input
           required
           type="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="Password"
           name="password"
           value={values.password}

@@ -33,15 +33,17 @@ function Header({
       </p>
       <div className="header__btn-container">
         <ToggleSwitch />
-
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add Clothes
-        </button>
+        {isLoggedIn && (
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+        )}
       </div>
+
       {isLoggedIn ? (
         <NavLink to="/profile" className="header__nav-Link">
           <div className="header__user-container">

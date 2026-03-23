@@ -9,5 +9,6 @@ export function useForm(defaultValue) {
   const handleReset = () => {
     setValues(defaultValue);
   };
+
   return { values, handleChange, setValues, handleReset };
 }

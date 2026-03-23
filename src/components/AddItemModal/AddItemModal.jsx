@@ -20,13 +20,13 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
       buttonText={buttonText}
       isFormValid={isValid}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="add-garment-name" className="modal__label">
         Name{" "}
         <div className="modal__input-container">
           <input
             type="text"
             className="modal__input"
-            id="name"
+            id="add-garment-name"
             placeholder="Name"
             name="name"
             value={values.name}
@@ -42,7 +42,7 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
             name="imageUrl"
             type="url"
             className="modal__input"
-            id="imageUrl"
+            id="add-garment-imageUrl"
             placeholder="Image URL"
             value={values.imageUrl}
             onChange={handleChange}
@@ -55,9 +55,12 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
       <div className="modal__radio-container">
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type:</legend>
-          <label htmlFor="hot" className="modal__label modal__label_type_radio">
+          <label
+            htmlFor="add-garment-hot"
+            className="modal__label modal__label_type_radio"
+          >
             <input
-              id="hot"
+              id="add-garment-hot"
               type="radio"
               className="modal__radio-input"
               name="weather"
@@ -68,11 +71,11 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
             hot
           </label>
           <label
-            htmlFor="warm"
+            htmlFor="add-garment-warm"
             className="modal__label modal__label_type_radio"
           >
             <input
-              id="warm"
+              id="add-garment-warm"
               type="radio"
               className="modal__radio-input"
               name="weather"
@@ -83,11 +86,11 @@ const AddItemModal = ({ isOpen, onClose, onAddItem, buttonText }) => {
             warm
           </label>
           <label
-            htmlFor="cold"
+            htmlFor="add-garment-cold"
             className="modal__label modal__label_type_radio"
           >
             <input
-              id="cold"
+              id="add-garment-cold"
               type="radio"
               className="modal__radio-input"
               name="weather"
