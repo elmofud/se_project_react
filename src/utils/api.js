@@ -1,5 +1,9 @@
 import { getAuthHeaders, request } from "./helpers";
-const baseUrl = "http://localhost:3001";
+// const baseUrl = "http://localhost:3001";
+const baseUrl =
+  import.meta.env.MODE === "production"
+    ? "https://api.elmofudfashion.crabdance.com"
+    : "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
 
 export const getItems = () => {
